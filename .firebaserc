@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "miclinica-app": {
+      "hosting": {
+        "miclinica-app": [
+          "miclinica-app"
+        ]
+      }
+    }
+  }
+}
