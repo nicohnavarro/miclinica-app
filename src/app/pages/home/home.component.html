@@ -1,1 +1,31 @@
-<p>home works!</p>
+<app-nav-bar (openSidebar)="drawer.toggle()"></app-nav-bar>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div class="sidebar">
+            <mat-list>
+                <div mat-subheader>Opciones</div>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>build</mat-icon>
+                    <div mat-line>Perfil</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>group</mat-icon>
+                    <div mat-line>Listados</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>date_range</mat-icon>
+                    <div mat-line>Sacar turno</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon mat-list-icon>assignment</mat-icon>
+                    <div mat-line>Encuesta</div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <!-- <app-carousel></app-carousel> -->
+    </div>
+
+</mat-drawer-container>

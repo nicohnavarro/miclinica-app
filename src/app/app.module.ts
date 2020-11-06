@@ -12,13 +12,22 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AngularMaterialModule } from './modules/angular-material.module';
+import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
+import { UploadImageComponent } from './components/shared/upload-image/upload-image.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { MatCarouselModule } from '@ngbmodule/material-carousel';
+import { CarouselComponent } from './components/shared/carousel/carousel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavBarComponent,
+    UploadImageComponent,
+    FooterComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +37,8 @@ import { AngularMaterialModule } from './modules/angular-material.module';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatCarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

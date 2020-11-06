@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button matTooltip="Menu de usuario" (click)="activateSidebar()">
+        <mat-icon  aria-hidden="false" aria-label="menu">menu</mat-icon>
+    </button>
+    <span>Mi clinica app</span>
+    <span class="spaced"></span>
+    <!-- <div *ngIf="usuario" >
+        <img  *ngIf="usuario != null" [src]="profileImg" alt="">
+    </div> -->
+    <!-- {{usuario | async | json}} -->
+    <button *ngIf="usuario" mat-button>{{usuario.correo}} </button>
+    <button mat-icon-button matTooltip="Cerrar sesion" *ngIf="usuario" (click)="logOut()">
+        <mat-icon aria-hidden="false" aria-label="logout">logout</mat-icon>
+    </button>
+    <!-- <button *ngIf="usuario" mat-button (click)="logOut()">Salir</button> -->
+    <button *ngIf="!usuario" mat-button (click)="goLogin()">Ingresar</button>
+</mat-toolbar>
