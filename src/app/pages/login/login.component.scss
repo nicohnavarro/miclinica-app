@@ -1,0 +1,90 @@
+.row {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  .column-imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 70vw;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    img {
+      width: 70%;
+      height: 70%;
+      animation: fadeIn ease 5s;
+    }
+    span {
+      animation: fadeIn ease 4s;
+      font-size: large;
+      margin-bottom: 1rem;
+    }
+  }
+  .column-login {
+    background-color: #fff5fd;
+    width: 30vw;
+    text-align: center;
+    animation: fadeIn ease 7s;
+
+    .example-form {
+        margin: auto;
+        mat-form-field {
+          border-radius: 20px;
+          background: #fff5fd;
+          box-shadow: 20px 20px 60px #d9d0d7, -20px -20px 60px #ffffff;
+          padding: 0.5rem;
+          width: 80%;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          mat-label {
+            color: black;
+          }
+        }
+      }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeBottom {
+    0% {
+      margin-top: 100%;
+    }
+    100% {
+      margin-top: 5%;
+    }
+  }
+
+mat-toolbar span {
+  flex: 1;
+  text-align: center;
+  align-items: center;
+}
+
+
+
+.btn-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+  text-align: center;
+  height: 20%;
+  button {
+    width: 80%;
+    height: 60%;
+    margin: 1rem 0.4rem;
+  }
+}
+mat-spinner {
+  margin-top: 1rem;
+  margin: auto;
+}
