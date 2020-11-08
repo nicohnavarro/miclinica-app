@@ -17,6 +17,7 @@ import { UploadImageComponent } from './components/shared/upload-image/upload-im
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
+import { StepperFormComponent } from './components/shared/stepper-form/stepper-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CarouselComponent } from './components/shared/carousel/carousel.compone
     NavBarComponent,
     UploadImageComponent,
     FooterComponent,
-    CarouselComponent
+    CarouselComponent,
+    StepperFormComponent
   ],
   imports: [
     BrowserModule,

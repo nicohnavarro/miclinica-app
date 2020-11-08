@@ -1,0 +1,81 @@
+<mat-horizontal-stepper linear="true" #stepper> 
+    <mat-step [stepControl]="datosPersonalesFormGroup">
+      <form [formGroup]="datosPersonalesFormGroup">
+        <ng-template matStepLabel>Datos personales</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput [formControl]="nombreFormCtrl" placeholder="Nombre">
+          <mat-error *ngIf="nombreFormCtrl.hasError('required')">
+              El nombre es <strong>obligatorio</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input matInput [formControl]="apellidoFormCtrl" placeholder="Apellido">
+          <mat-error *ngIf="apellidoFormCtrl.hasError('required')">
+              El apellido es <strong>obligatorio</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="edadFormCtrl">
+          <mat-label>Edad</mat-label>
+          <input matInput type="number" [formControl]="edadFormCtrl" placeholder="Edad">
+          <mat-error *ngIf="edadFormCtrl.hasError('required')">
+              La edad es <strong>obligatoria</strong>
+          </mat-error>
+      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Domicilio</mat-label>
+          <input matInput [formControl]="domicilioFormCtrl" placeholder="Domicilio">
+          <mat-error *ngIf="domicilioFormCtrl.hasError('required')">
+            El domicilio es <strong>obligatorio</strong>
+          </mat-error> 
+      </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="datosCuentaFormGroup" label="Datos de cuenta">
+      <form [formGroup]="datosCuentaFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Correo electronico</mat-label>
+          <input matInput [formControl]="emailFormCtrl" placeholder="Ej. admin@gmail.com">
+          <mat-error *ngIf="emailFormCtrl.hasError('email') && !emailFormCtrl.hasError('required')">
+              Por favor ingrese un correo valido.
+          </mat-error>
+          <mat-error *ngIf="emailFormCtrl.hasError('required')">
+              El correo es <strong>obligatorio</strong>
+          </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+          <mat-label>Ingrese su contraseña </mat-label>
+          <input matInput [formControl]="claveFormCtrl" minlength="6" [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="claveFormCtrl.hasError('required')">
+              La contraseña es <strong>obligatoria</strong>
+          </mat-error>
+          <mat-error *ngIf="claveFormCtrl.value.length < 6">
+              La contraseña debe contener al menos <strong>6 caracteres</strong>
+          </mat-error>
+      </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Atras</button>
+          <button mat-button matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Control de datos</ng-template>
+      <p>Verifica que todos tus datos esten bien! No hay vuelta atras!</p>
+      <p>Mentira, podes modificarlo cuando vos quieras!</p>
+      <div>
+        <button mat-button matStepperPrevious>Atras</button>
+        <button mat-button (click)="EnviarRegistro()">Registrar</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
