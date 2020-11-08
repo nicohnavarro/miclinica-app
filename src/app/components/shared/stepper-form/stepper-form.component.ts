@@ -8,6 +8,24 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class StepperFormComponent implements OnInit {
 
+  imagen_uno:string = '../../../assets/img/user.png';
+  subirImagen_uno;
+
+  obtieneImagen_uno(e){
+    this.imagen_uno=e.result;
+  }
+  archivoSubir_uno(e){
+    this.subirImagen_uno=e;
+  }
+  imagen_dos:string = '../../../assets/img/user.png';
+  subirImagen_dos;
+
+  obtieneImagen_dos(e){
+    this.imagen_dos=e.result;
+  }
+  archivoSubir_dos(e){
+    this.subirImagen_dos=e;
+  }
   //#region  FormControls
   nombreFormCtrl: FormControl;
   apellidoFormCtrl: FormControl;
@@ -27,10 +45,6 @@ export class StepperFormComponent implements OnInit {
   cargando = false;
   camposVacios: boolean = true;
   usuario: any = null;
-  imagen1: string = '../../../../assets/user.png';
-  imagen2: string = '../../../../assets/user.png';
-  imagen1Subir;
-  imagen2Subir;
 
   datosPersonalesFormGroup: FormGroup;
   datosCuentaFormGroup: FormGroup;
