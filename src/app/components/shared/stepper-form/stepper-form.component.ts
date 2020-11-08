@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-stepper-form',
@@ -8,23 +9,24 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class StepperFormComponent implements OnInit {
 
-  imagen_uno:string = '../../../assets/img/user.png';
+  @Output() usuario_registrado:EventEmitter<User> = new EventEmitter<User>();
+  imagen_uno: string = '../../../assets/img/user.png';
   subirImagen_uno;
 
-  obtieneImagen_uno(e){
-    this.imagen_uno=e.result;
+  obtieneImagen_uno(e) {
+    this.imagen_uno = e.result;
   }
-  archivoSubir_uno(e){
-    this.subirImagen_uno=e;
+  archivoSubir_uno(e) {
+    this.subirImagen_uno = e;
   }
-  imagen_dos:string = '../../../assets/img/user.png';
+  imagen_dos: string = '../../../assets/img/user.png';
   subirImagen_dos;
 
-  obtieneImagen_dos(e){
-    this.imagen_dos=e.result;
+  obtieneImagen_dos(e) {
+    this.imagen_dos = e.result;
   }
-  archivoSubir_dos(e){
-    this.subirImagen_dos=e;
+  archivoSubir_dos(e) {
+    this.subirImagen_dos = e;
   }
   //#region  FormControls
   nombreFormCtrl: FormControl;
@@ -40,18 +42,19 @@ export class StepperFormComponent implements OnInit {
 
   tipoUsuario: string;
   tiposUsuarios: string[] = ['Paciente', 'Medico'];
-  especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia','Neurologia','Urologia','Pediatria','Odontologia','Reumatologia','Neonatologia','Psiquiatria'];
+  especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia', 'Neurologia', 'Urologia', 'Pediatria', 'Odontologia', 'Reumatologia', 'Neonatologia', 'Psiquiatria'];
   hide = true;
   cargando = false;
-  camposVacios: boolean = true;
-  usuario: any = null;
+  usuario: User;
 
   datosPersonalesFormGroup: FormGroup;
   datosCuentaFormGroup: FormGroup;
-  datosTipoFormGroup:FormGroup;
+  datosTipoFormGroup: FormGroup;
   constructor() {
+    this.usuario = new User();
     this.datosPersonalesFormGroup = new FormGroup({});
     this.datosTipoFormGroup = new FormGroup({});
+    this.datosCuentaFormGroup = new FormGroup({});
     this.nombreFormCtrl = new FormControl('', [Validators.required]);
     this.apellidoFormCtrl = new FormControl('', [Validators.required]);
     this.edadFormCtrl = new FormControl('', [Validators.required]);
@@ -61,13 +64,12 @@ export class StepperFormComponent implements OnInit {
     this.datosPersonalesFormGroup.addControl('edad', this.edadFormCtrl);
     this.datosPersonalesFormGroup.addControl('domicilio', this.domicilioFormCtrl);
 
-    this.datosCuentaFormGroup = new FormGroup({});
     this.emailFormCtrl = new FormControl('', [Validators.required, Validators.email]);
     this.claveFormCtrl = new FormControl('', [Validators.required, Validators.minLength(6)]);
     this.datosCuentaFormGroup.addControl('email', this.emailFormCtrl);
     this.datosCuentaFormGroup.addControl('clave', this.claveFormCtrl);
     this.especialidadFormCtrl = new FormControl('');
-    this.datosTipoFormGroup.addControl('especialidad',this.especialidadFormCtrl);
+    this.datosTipoFormGroup.addControl('especialidad', this.especialidadFormCtrl);
   }
 
   ngOnInit(): void {
@@ -75,17 +77,33 @@ export class StepperFormComponent implements OnInit {
   }
 
   EnviarRegistro() {
-    console.log(this.datosPersonalesFormGroup);
-    console.log(this.datosCuentaFormGroup);
-    console.log(this.tipoUsuario);
-    console.log(this.especialidadFormCtrl.value);
+    this.CrearUsuario();
+    this.usuario_registrado.emit(this.usuario);
   }
 
-  MostrarDatos() {
-
+  LimpiarCampos() {
+    this.datosPersonalesFormGroup.reset();
+    //this.datosCuentaFormGroup.reset();
+    this.claveFormCtrl.setValue('');
+    this.emailFormCtrl.setValue('');
+    this.datosTipoFormGroup.reset();
+    this.imagen_uno = '../../../assets/img/user.png';
+    this.imagen_dos = '../../../assets/img/user.png';
+    this.tipoUsuario = '';
   }
 
   resolved(captchaResponse: string) {
     console.log(`Resolved captcha with response: ${captchaResponse}`);
+  }
+
+  CrearUsuario() {
+    this.usuario.name = this.nombreFormCtrl.value;
+    this.usuario.surname = this.apellidoFormCtrl.value;
+    this.usuario.age = this.edadFormCtrl.value;
+    this.usuario.mail = this.emailFormCtrl.value;
+    this.usuario.password = this.claveFormCtrl.value;
+    this.usuario.address = this.domicilioFormCtrl.value;
+    this.usuario.first_image = this.subirImagen_uno;
+    this.usuario.second_image = this.imagen_dos;
   }
 }

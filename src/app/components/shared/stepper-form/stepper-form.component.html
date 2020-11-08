@@ -111,8 +111,23 @@
     <ng-template matStepLabel>Control de datos</ng-template>
     <p>Verifica que todos tus datos esten bien! No hay vuelta atras!</p>
     <p>Mentira, podes modificarlo cuando vos quieras!</p>
+    <app-user-detail 
+    [nombre]=nombreFormCtrl.value
+    [apellido]=apellidoFormCtrl.value
+    [domicilio]=domicilioFormCtrl.value
+    [edad]=edadFormCtrl.value
+    [correo]=emailFormCtrl.value
+    [imagen_uno]=imagen_uno
+    [imagen_dos]=imagen_dos
+    [tipo]=tipoUsuario
+    [especialidades]=especialidadFormCtrl.value
+
+    
+    >
+    </app-user-detail>
     <div class="btn-form">
       <button mat-raised-button color="accent" matStepperPrevious>Atras</button>
+      <button mat-raised-button color="warn" (click)="LimpiarCampos()">Limpiar todo</button>
       <button mat-raised-button color="primary" (click)="EnviarRegistro()">Registrar</button>
     </div>
   </mat-step>

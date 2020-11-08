@@ -18,19 +18,14 @@ public user:User;
       return result;
     }
     catch(err){
-      console.log(err);
+      throw err;
     }
   }
 
   async register(email:string,password:string){
-    try{
-      const result = await this.afAuth.createUserWithEmailAndPassword(email,password);
+      const result = await this.afAuth.createUserWithEmailAndPassword(email,password).catch(err=> {throw err});
       this.enviarMailRegistro();
       return result;
-    }
-    catch(err){
-      console.log(err);
-    }
   }
 
   async logout(){
@@ -48,11 +43,10 @@ public user:User;
 
   public enviarMailRegistro(){
     this.afAuth.currentUser.then( resp => {
-      
-      // resp.sendEmailVerification({
-      //   handleCodeInApp: true,
-      //   url: environment.urlVerify
-      // });
+      resp.sendEmailVerification({
+        handleCodeInApp: true,
+        url: 'http://localhost:4200/login'
+      });
     });
   }
 }

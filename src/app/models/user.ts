@@ -1,10 +1,23 @@
-export interface User {
+export interface IUser {
     id:string,
-    correo:string,
-    clave:string,
+    mail:string,
+    password:string,
+    address:string,
     name:string,
     surname:string,
     first_image:string,
     second_image:string,
     age:number,
+}
+
+export class User implements IUser {
+    id: string;
+    mail: string;
+    password: string;
+    address: string;
+    name: string;
+    surname: string;
+    first_image: string;
+    second_image: string;
+    age: number;
 }
