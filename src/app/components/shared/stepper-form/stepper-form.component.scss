@@ -21,7 +21,7 @@ mat-step {
     box-shadow: 20px 20px 60px #bababa, -20px -20px 60px #fcfcfc;
     padding: 0.3rem;
     width: 30%;
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-bottom: 1rem;
     margin-left: 2rem;
     mat-label {
@@ -31,6 +31,14 @@ mat-step {
       color: black;
     }
   }
+}
+.captcha{
+    margin: 1% auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10%;
 }
 
 .btn-form{
@@ -59,4 +67,13 @@ mat-step {
             margin: 1rem 1rem;
         }
   }
+
+  .btn-form{
+    text-align: center;
+    margin: auto;
+    margin-top: 3rem;
+    button{
+        margin-left: 1rem;
+    }
+}
 }

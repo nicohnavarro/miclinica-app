@@ -1,4 +1,4 @@
-<mat-vertical-stepper linear="true" #stepper color='basic'>
+<mat-vertical-stepper linear="false" #stepper color='basic'>
   <mat-step [stepControl]="datosPersonalesFormGroup">
     <form [formGroup]="datosPersonalesFormGroup">
       <div class="form_datos">
@@ -66,6 +66,9 @@
         </mat-error>
       </mat-form-field>
     </form>
+    <div class="captcha">
+      <re-captcha (resolved)="resolved($event)" siteKey="6Lcv5fgUAAAAALZuvhQHpOBljPWXfGeD165TICyR"></re-captcha>
+    </div>
     <div class="btn-form">
       <button mat-raised-button color="accent" matStepperPrevious>Atras</button>
       <button mat-raised-button color="primary" matStepperNext>Siguiente</button>

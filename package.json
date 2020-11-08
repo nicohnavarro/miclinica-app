@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.0",
     "@ngbmodule/material-carousel": "^0.7.1",
     "firebase": "^8.0.1",
+    "ng-recaptcha": "^6.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
