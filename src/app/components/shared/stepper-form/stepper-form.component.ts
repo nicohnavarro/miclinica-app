@@ -35,12 +35,12 @@ export class StepperFormComponent implements OnInit {
   emailFormCtrl: FormControl;
   claveFormCtrl: FormControl;
 
-  especialidadFormCtrl: FormControl = new FormControl();
+  especialidadFormCtrl: FormControl;
   //#endregion
 
   tipoUsuario: string;
   tiposUsuarios: string[] = ['Paciente', 'Medico'];
-  especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia'];
+  especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia','Neurologia','Urologia','Pediatria','Odontologia','Reumatologia','Neonatologia','Psiquiatria'];
   hide = true;
   cargando = false;
   camposVacios: boolean = true;
@@ -48,8 +48,10 @@ export class StepperFormComponent implements OnInit {
 
   datosPersonalesFormGroup: FormGroup;
   datosCuentaFormGroup: FormGroup;
+  datosTipoFormGroup:FormGroup;
   constructor() {
     this.datosPersonalesFormGroup = new FormGroup({});
+    this.datosTipoFormGroup = new FormGroup({});
     this.nombreFormCtrl = new FormControl('', [Validators.required]);
     this.apellidoFormCtrl = new FormControl('', [Validators.required]);
     this.edadFormCtrl = new FormControl('', [Validators.required]);
@@ -64,6 +66,8 @@ export class StepperFormComponent implements OnInit {
     this.claveFormCtrl = new FormControl('', [Validators.required, Validators.minLength(6)]);
     this.datosCuentaFormGroup.addControl('email', this.emailFormCtrl);
     this.datosCuentaFormGroup.addControl('clave', this.claveFormCtrl);
+    this.especialidadFormCtrl = new FormControl('Selecciona');
+    this.datosTipoFormGroup.addControl('especialidad',this.especialidadFormCtrl);
   }
 
   ngOnInit(): void {

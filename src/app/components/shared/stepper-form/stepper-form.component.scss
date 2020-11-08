@@ -68,6 +68,38 @@ mat-step {
   }
 }
 
+.datos_tipo {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+  padding: 2rem;
+  .tipo {
+    min-width: 200px;
+    height: 50px;
+    label {
+      font-weight: 400;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    mat-radio-button {
+      margin-right: 1rem;
+      margin-top: 0.4rem;
+    }
+    width: 25%;
+    background-color: #c2185b;
+    border-radius: 15px;
+  }
+  mat-form-field {
+    width: 50%;
+    margin-top: 0;
+    color: black;
+  }
+}
+::ng-deep .mat-select-value{    
+  color: black!important;  }
+
+
 @media only screen and (max-width: 950px) {
   mat-horizontal-stepper {
     background-color: #dbdbdb;
@@ -95,7 +127,6 @@ mat-step {
     }
   }
   .datos_impor {
-    
     width: 100%;
     mat-form-field {
       width: 80%;
