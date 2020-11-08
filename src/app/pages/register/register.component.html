@@ -1,5 +1,5 @@
 <app-nav-bar (openSidebar)="drawer.toggle()"></app-nav-bar>
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container class="example-container">
     <mat-drawer #drawer class="example-sidenav" mode="side">
         <div class="sidebar">
             <mat-list>
@@ -25,8 +25,9 @@
     </mat-drawer>
 
     <div class="example-sidenav-content">
-        
-        <app-stepper-form></app-stepper-form>
+        <mat-card>
+            <app-stepper-form></app-stepper-form>
+        </mat-card>
     </div>
 
 </mat-drawer-container>

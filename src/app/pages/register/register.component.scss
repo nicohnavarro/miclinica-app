@@ -1,58 +1,51 @@
-mat-drawer-container{
-    mat-drawer{
-      .sidebar{
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-      }
-    }
-  
-  }
-  
-  .example-container {
-      width: 100%;
-      height: 92vh;
-      border: 1px solid rgba(0, 0, 0, 0.5);
-      .example-sidenav {
-        button{
-          margin: 1rem;
-        }
-        padding: 0px;
-        width: 15vw;
-        min-width: 200px;
-      }
-    }
-    
-    .example-sidenav-content {
+mat-drawer-container {
+  width: 100%;
+  mat-drawer {
+    .sidebar {
       display: flex;
-      height: 100%;
-      width: 100%;
-    //   overflow-x: hidden;
-      background-color: #fff5fd;
-      .example-form {
-        margin: auto;
-        mat-form-field {
-          border-radius: 20px;
-          background: #fff5fd;
-          box-shadow: 20px 20px 60px #d9d0d7, -20px -20px 60px #ffffff;
-          padding: 0.5rem;
-          width: 30%;
-          margin-top: 2rem;
-          margin-left: 1rem;
-          margin-bottom: 2rem;
-          mat-label {
-            color: black;
-          }
-        }
-      }
+      flex-direction: column;
+      justify-content: start;
     }
-    
-   mat-list{
-    mat-list-item:hover{
-      cursor: pointer;
-      background-color: #c2185b;
+  }
+}
+
+.example-container {
+  width: 100vw;
+  height: 92vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  .example-sidenav {
+    button {
+      margin: 1rem;
     }
-    mat-list-item{
-      transition: background-color 0.2s linear 0.2s;
-    }
-   }
+    padding: 0px;
+    width: 15vw;
+    min-width: 200px;
+  }
+}
+
+.example-sidenav-content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #dbdbdb;
+
+  mat-card {
+    margin:0;
+    margin-top: 2rem;
+    height: 90%;
+    border-radius: 20px;
+    background-color: transparent;
+    padding:0.2rem;
+  }
+}
+
+mat-list {
+  mat-list-item:hover {
+    cursor: pointer;
+    background-color: #c2185b;
+  }
+  mat-list-item {
+    transition: background-color 0.2s linear 0.2s;
+  }
+}
