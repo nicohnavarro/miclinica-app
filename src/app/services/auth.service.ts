@@ -8,7 +8,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-public user:User;
+public user;
 
   constructor(public afAuth:AngularFireAuth) { }
 

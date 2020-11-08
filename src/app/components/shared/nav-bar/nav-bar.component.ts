@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,16 +10,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavBarComponent implements OnInit {
 @Output() openSidebar:EventEmitter<any> = new EventEmitter();
-  constructor(private router:Router,private authSvc:AuthService) { }
-  usuario:User;
+@Input() usuario:User;
+ingreso_usuario:boolean;
+
+  constructor(private router:Router,private authSvc:AuthService) { 
+    this.ingreso_usuario =false;
+    this.authSvc.getCurrentUser().then(user=>{
+      if(user.email){
+        this.ingreso_usuario=true;
+      }
+    })
+  }
+
   ngOnInit(): void {
-    this.usuario = JSON.parse(localStorage.getItem('usuario'));
   }
 
   async logOut(){
     try{
       await this.authSvc.logout();
-      localStorage.removeItem('usuario');
       this.router.navigate(['/login'])
     }
     catch(err){
