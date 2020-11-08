@@ -134,6 +134,15 @@ mat-step {
     }
   }
 
+  .datos_tipo{
+    flex-direction: column;
+    mat-form-field{
+      margin-right: 1rem;
+      margin-left: 0;
+    }
+
+  }
+
   .captcha {
     margin-top: 3rem;
   }
