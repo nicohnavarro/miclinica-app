@@ -19,6 +19,9 @@ import { MatCarouselModule } from '@ngbmodule/material-carousel';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { StepperFormComponent } from './components/shared/stepper-form/stepper-form.component';
 import { UserDetailComponent } from './components/shared/user-detail/user-detail.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { SpinnerModalComponent } from './components/shared/spinner-modal/spinner-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { UserDetailComponent } from './components/shared/user-detail/user-detail
     FooterComponent,
     CarouselComponent,
     StepperFormComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    SpinnerModalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,9 @@ import { UserDetailComponent } from './components/shared/user-detail/user-detail
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularMaterialModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
     RecaptchaModule,
     MatCarouselModule.forRoot()
   ],

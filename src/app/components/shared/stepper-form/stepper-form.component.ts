@@ -10,6 +10,8 @@ import { User } from 'src/app/models/user';
 export class StepperFormComponent implements OnInit {
 
   @Output() usuario_registrado:EventEmitter<User> = new EventEmitter<User>();
+  @Output() user_img_1:EventEmitter<File> = new EventEmitter<File>();
+  @Output() user_img_2:EventEmitter<File> = new EventEmitter<File>();
   imagen_uno: string = '../../../assets/img/user.png';
   subirImagen_uno;
 
@@ -78,7 +80,12 @@ export class StepperFormComponent implements OnInit {
 
   EnviarRegistro() {
     this.CrearUsuario();
-    this.usuario_registrado.emit(this.usuario);
+    this.user_img_1.emit(this.subirImagen_uno);
+    this.user_img_2.emit(this.subirImagen_dos);
+    setTimeout(() => {
+      this.usuario_registrado.emit(this.usuario);
+    }, 1000);
+
   }
 
   LimpiarCampos() {
@@ -103,7 +110,9 @@ export class StepperFormComponent implements OnInit {
     this.usuario.mail = this.emailFormCtrl.value;
     this.usuario.password = this.claveFormCtrl.value;
     this.usuario.address = this.domicilioFormCtrl.value;
-    this.usuario.first_image = this.subirImagen_uno;
+    this.usuario.first_image = this.imagen_uno;
     this.usuario.second_image = this.imagen_dos;
+    this.usuario.type = this.tipoUsuario;
+    this.usuario.especializaciones = this.especialidadFormCtrl.value;
   }
 }

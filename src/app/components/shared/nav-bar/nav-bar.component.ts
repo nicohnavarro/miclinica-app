@@ -19,7 +19,7 @@ ingreso_usuario:boolean;
       if(user.email){
         this.ingreso_usuario=true;
       }
-    })
+    }).catch(err=>{console.log(err)})
   }
 
   ngOnInit(): void {

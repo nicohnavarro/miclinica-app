@@ -1,5 +1,5 @@
 export interface IUser {
-    id:string,
+    id?:string,
     mail:string,
     password:string,
     address:string,
@@ -20,4 +20,10 @@ export class User implements IUser {
     first_image: string;
     second_image: string;
     age: number;
+    type:string;
+    especializaciones?:string[];
+
+    constructor(){
+        this.especializaciones=[];
+    }
 }
