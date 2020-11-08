@@ -80,9 +80,8 @@
       <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="datosTipoFormGroup">
-    <form>
-      <div class="form_datos">
+  <mat-step>
+    <div class="form_datos">
         <ng-template matStepLabel>Tipo de usuario</ng-template>
         <div class="datos_tipo">
           <div class="tipo">
@@ -95,15 +94,14 @@
           </div>
           <mat-form-field *ngIf="tipoUsuario == 'Medico'"appearance="fill" color="accent">
               <mat-label>Especialidad</mat-label>
-              <mat-select class="select_color" [formControlName]="especialidadFormCtrl" multiple required>
+              <mat-select class="select_color" [formControl]="especialidadFormCtrl" multiple required>
                   <mat-option class="select_color" *ngFor="let especialidad of especialidades" [value]="especialidad">
                       {{especialidad}}
                   </mat-option>
               </mat-select>
           </mat-form-field>
       </div>
-      </div>
-    </form>
+  </div>
     <div class="btn-form">
       <button mat-raised-button color="accent" matStepperPrevious>Atras</button>
       <button matStepperNext mat-raised-button color="primary">Siguiente</button>

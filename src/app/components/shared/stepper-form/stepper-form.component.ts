@@ -66,7 +66,7 @@ export class StepperFormComponent implements OnInit {
     this.claveFormCtrl = new FormControl('', [Validators.required, Validators.minLength(6)]);
     this.datosCuentaFormGroup.addControl('email', this.emailFormCtrl);
     this.datosCuentaFormGroup.addControl('clave', this.claveFormCtrl);
-    this.especialidadFormCtrl = new FormControl('Selecciona');
+    this.especialidadFormCtrl = new FormControl('');
     this.datosTipoFormGroup.addControl('especialidad',this.especialidadFormCtrl);
   }
 
@@ -75,11 +75,10 @@ export class StepperFormComponent implements OnInit {
   }
 
   EnviarRegistro() {
-    setTimeout(() => {
-      alert('apopsa')
-    }, 4000);
     console.log(this.datosPersonalesFormGroup);
     console.log(this.datosCuentaFormGroup);
+    console.log(this.tipoUsuario);
+    console.log(this.especialidadFormCtrl.value);
   }
 
   MostrarDatos() {
