@@ -27,6 +27,8 @@ import { ListadoProfesionalesComponent } from './components/profesionales/listad
 import { DetalleProfesionalComponent } from './components/profesionales/detalle-profesional/detalle-profesional.component';
 import { DetallePacienteComponent } from './components/pacientes/detalle-paciente/detalle-paciente.component';
 import { ListadosComponent } from './pages/listados/listados.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { InfoHomeComponent } from './components/shared/info-home/info-home.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ListadosComponent } from './pages/listados/listados.component';
     ListadoProfesionalesComponent,
     DetalleProfesionalComponent,
     DetallePacienteComponent,
-    ListadosComponent
+    ListadosComponent,
+    SidebarComponent,
+    InfoHomeComponent
   ],
   imports: [
     BrowserModule,
