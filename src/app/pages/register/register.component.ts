@@ -24,30 +24,39 @@ export class RegisterComponent implements OnInit {
   async ObtenerUsuario(user: User) {
     console.log(user);
     this.openDialog();
-    //await this.authSvc.register(user.mail, user.password).catch(err => {this.openSnackBar(err,'Uops!');});
+    
     await this.fileSvc.UploadFile(this.file_uno, user.mail)
     setTimeout(() => {
       user.first_image = this.fileSvc.fb;
       this.fileSvc.UploadFile(this.file_dos, user.mail)
-      setTimeout(() => {
+      setTimeout(async() => {
         user.second_image = this.fileSvc.fb;
         console.log(user);
         switch (user.type) {
           case 'Paciente':
             this.userSvc.agregarPaciente(user);
+            debugger
+            this.Registrar(user);
             //this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
             break;
           case 'Medico':
             this.userSvc.agregarMedico(user);
+            this.Registrar(user);
             break;
           case 'Admin':
             this.userSvc.agregarAdmin(user);
+            this.Registrar(user);
             break;
           default:
             break;
         }
       }, 2000);
     }, 4000);
+  }
+
+  async Registrar(user:User){
+    console.log(user);
+    await this.authSvc.register(user.mail, user.password).catch(err => {this.openSnackBar(err,'Uops!');});
   }
 
   GetImgDos(img: File) {
