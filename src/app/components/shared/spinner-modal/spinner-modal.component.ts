@@ -12,7 +12,7 @@ cargando:boolean;
     this.cargando=true;
     setTimeout(() => {
       this.cargando=false;
-    }, 5000);
+    }, 7000);
   }
 
   ngOnInit(): void {
