@@ -22,7 +22,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   async ObtenerUsuario(user: User) {
-    console.log(user);
     this.openDialog();
     
     await this.fileSvc.UploadFile(this.file_uno, user.mail)
@@ -31,11 +30,9 @@ export class RegisterComponent implements OnInit {
       this.fileSvc.UploadFile(this.file_dos, user.mail)
       setTimeout(async() => {
         user.second_image = this.fileSvc.fb;
-        console.log(user);
         switch (user.type) {
           case 'Paciente':
             this.userSvc.agregarPaciente(user);
-            debugger
             this.Registrar(user);
             //this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
             break;
@@ -55,12 +52,10 @@ export class RegisterComponent implements OnInit {
   }
 
   async Registrar(user:User){
-    console.log(user);
     await this.authSvc.register(user.mail, user.password).catch(err => {this.openSnackBar(err,'Uops!');});
   }
 
   GetImgDos(img: File) {
-    console.log(img)
     this.file_uno = img;
   }
 

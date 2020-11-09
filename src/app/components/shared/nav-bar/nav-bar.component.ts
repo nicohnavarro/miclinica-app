@@ -36,7 +36,6 @@ ingreso_usuario:boolean;
 
   activateSidebar(){
     this.openSidebar.emit('Abri el sideBar');
-    console.log()
   }
 
 }

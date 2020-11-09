@@ -41,7 +41,6 @@ export class ListadoPacientesComponent implements OnInit {
   getPacientes(){
     this.userSvc.getPacientes().subscribe(data => {
       this.pacientes = data;
-      console.log(data)
       this.dataSource.data = this.pacientes;
       setTimeout(() => {
         

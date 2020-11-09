@@ -39,7 +39,6 @@ export class ListadoProfesionalesComponent implements OnInit {
   getMedicos(){
     this.userSvc.getMedicos().subscribe(data => {
       this.medicos = data;
-      console.log(data)
       this.dataSource.data = this.medicos;
       setTimeout(() => {
         
