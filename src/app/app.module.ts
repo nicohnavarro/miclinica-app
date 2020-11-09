@@ -22,6 +22,11 @@ import { UserDetailComponent } from './components/shared/user-detail/user-detail
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { SpinnerModalComponent } from './components/shared/spinner-modal/spinner-modal.component';
+import { ListadoPacientesComponent } from './components/pacientes/listado-pacientes/listado-pacientes.component';
+import { ListadoProfesionalesComponent } from './components/profesionales/listado-profesionales/listado-profesionales.component';
+import { DetalleProfesionalComponent } from './components/profesionales/detalle-profesional/detalle-profesional.component';
+import { DetallePacienteComponent } from './components/pacientes/detalle-paciente/detalle-paciente.component';
+import { ListadosComponent } from './pages/listados/listados.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { SpinnerModalComponent } from './components/shared/spinner-modal/spinner
     CarouselComponent,
     StepperFormComponent,
     UserDetailComponent,
-    SpinnerModalComponent
+    SpinnerModalComponent,
+    ListadoPacientesComponent,
+    ListadoProfesionalesComponent,
+    DetalleProfesionalComponent,
+    DetallePacienteComponent,
+    ListadosComponent
   ],
   imports: [
     BrowserModule,
