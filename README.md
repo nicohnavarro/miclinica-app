@@ -16,11 +16,14 @@ que se detallan a continuación.
 
 ### Ingreso 🏥
 
-![principal]()
+![principal](https://github.com/nicohnavarro/miclinica-app/blob/master/src/assets/readme/image_00.PNG)
 
 ### Registro ➕
 
-![principal]()
+![principal](https://github.com/nicohnavarro/miclinica-app/blob/master/src/assets/readme/registro_00.PNG)
+![principal](https://github.com/nicohnavarro/miclinica-app/blob/master/src/assets/readme/registro_01.PNG)
+![principal](https://github.com/nicohnavarro/miclinica-app/blob/master/src/assets/readme/registro_02.PNG)
+![principal](https://github.com/nicohnavarro/miclinica-app/blob/master/src/assets/readme/registro_03.PNG)
 
 
 ### Listados 📦
