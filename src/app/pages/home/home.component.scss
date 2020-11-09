@@ -25,10 +25,11 @@ mat-drawer-container{
   
   .example-sidenav-content {
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    background-color: #fff5fd;
+    background-color: #dedede;
   }
   
  mat-list{
@@ -40,3 +41,105 @@ mat-drawer-container{
     transition: background-color 0.2s linear 0.2s;
   }
  }
+
+ .aviso{
+   margin: 2rem auto;
+   height: auto;
+   display: flex;
+   flex-direction: column;
+   mat-card{
+     display: flex;
+     flex-direction: column;
+   }
+ }
+
+ .example-card {
+  border-radius: 54px;
+  background: #dedede;
+  box-shadow:  35px 35px 70px #bdbdbd, 
+               -35px -35px 70px #ffffff;
+   color: black;
+   padding: 2rem;
+   margin: 2rem;
+   display: flex;
+   flex-direction: row;
+   height: auto;
+   max-height: 200px;
+   .img-container{
+     width: 50%;
+     height: 100%;
+     img{
+       width: 80%;
+       height: 100%;
+       object-fit: contain;
+       animation: fadeIn ease 4s;
+       border-radius: 25px;
+     }
+   }
+
+   .text-info{
+     width: 50%;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     justify-content: start;
+     h2{
+       animation: fadeIn ease 7s;
+     }
+   }
+
+ }
+
+
+ @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+@media only screen and (max-width: 700px) {
+  .example-card {
+    border-radius: 54px;
+    background: #dedede;
+    box-shadow:  35px 35px 70px #bdbdbd, 
+                 -35px -35px 70px #ffffff;
+     color: black;
+     padding: 1rem;
+     margin: 1rem;
+     display: flex;
+     flex-direction: column;
+     height: auto;
+     max-height: 500px;
+     .img-container{
+       width: 100%;
+       height: 100%;
+       justify-content: center;
+       align-items: center;
+       img{
+         width: 100%;
+         height: 100%;
+         object-fit: contain;
+         animation: fadeIn ease 4s;
+         border-radius: 25px;
+       }
+     }
+  
+     .text-info{
+       width: 100%;
+       display: flex;
+       flex-direction: column;
+       flex-wrap: wrap;
+       justify-content: start;
+       h2{
+         animation: fadeIn ease 7s;
+       }
+     }
+  
+   }
+  
+}

@@ -9,15 +9,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent implements OnInit {
   showFiller = false;
-  usuario: User;
+  usuario;
   verificado: boolean;
   constructor(private authSvc: AuthService) {
-    this.usuario = new User();
-    this.verificado = false;
-    this.authSvc.getCurrentUser().then(user => {
-      this.usuario.mail = user.email;
-      this.verificado = user.emailVerified
-    }).catch(err=>{console.log(err)});
+    if(this.authSvc.user){
+      this.usuario=this.authSvc.user;
+      this.verificado = this.authSvc.user.emailVerified;
+    }
   }
   ngOnInit(): void {
 

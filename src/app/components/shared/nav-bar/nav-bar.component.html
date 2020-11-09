@@ -8,10 +8,10 @@
         <img  *ngIf="usuario != null" [src]="profileImg" alt="">
     </div> -->
     <!-- {{usuario | async | json}} -->
-    <button *ngIf="ingreso_usuario" mat-button>{{usuario.mail}} </button>
-    <button mat-icon-button matTooltip="Cerrar sesion" *ngIf="ingreso_usuario" (click)="logOut()">
+    <button *ngIf="usuario" mat-button>{{usuario.email}} </button>
+    <button mat-icon-button matTooltip="Cerrar sesion" *ngIf="usuario" (click)="logOut()">
         <mat-icon aria-hidden="false" aria-label="logout">logout</mat-icon>
     </button>
     <!-- <button *ngIf="usuario" mat-button (click)="logOut()">Salir</button> -->
-    <button *ngIf="!ingreso_usuario" mat-button (click)="goLogin()">Ingresar</button>
+    <button *ngIf="!usuario" mat-button (click)="goLogin()">Ingresar</button>
 </mat-toolbar>

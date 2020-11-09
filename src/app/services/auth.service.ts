@@ -15,6 +15,7 @@ public user;
   async login(email:string, password:string){
     try{
       const result = await this.afAuth.signInWithEmailAndPassword(email,password);
+      this.user = result.user;
       return result;
     }
     catch(err){
@@ -25,6 +26,7 @@ public user;
   async register(email:string,password:string){
       const result = await this.afAuth.createUserWithEmailAndPassword(email,password).catch(err=> {throw err});
       this.enviarMailRegistro();
+      this.user =result.user;
       return result;
   }
 
