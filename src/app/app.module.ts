@@ -29,6 +29,8 @@ import { DetallePacienteComponent } from './components/pacientes/detalle-pacient
 import { ListadosComponent } from './pages/listados/listados.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { InfoHomeComponent } from './components/shared/info-home/info-home.component';
+import { SacarTurnoComponent } from './components/sacar-turno/sacar-turno.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { InfoHomeComponent } from './components/shared/info-home/info-home.compo
     DetallePacienteComponent,
     ListadosComponent,
     SidebarComponent,
-    InfoHomeComponent
+    InfoHomeComponent,
+    SacarTurnoComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
         <div class="sidebar">
             <mat-list>
                 <div mat-subheader>Opciones</div>
-                <mat-list-item [routerLink]="['/home']">
+                <mat-list-item [routerLink]="['/admin/home']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>home</mat-icon>
                     <div mat-line>Home</div>
                 </mat-list-item>
@@ -12,15 +12,15 @@
                     <mat-icon mat-list-icon>build</mat-icon>
                     <div mat-line>Perfil</div>
                 </mat-list-item>
-                <mat-list-item [routerLink]="['/home/listados']">
+                <mat-list-item [routerLink]="['/admin/listados']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>group</mat-icon>
                     <div mat-line>Listados</div>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item [routerLink]="['/admin/sacar-turno']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>date_range</mat-icon>
                     <div mat-line>Sacar turno</div>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item [routerLink]="['/admin/encuesta']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>assignment</mat-icon>
                     <div mat-line>Encuesta</div>
                 </mat-list-item>
