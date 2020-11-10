@@ -33,6 +33,7 @@ import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.co
 import { SacarTurnoComponent } from './pages/sacar-turno/sacar-turno.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { EnumAsStringPipe } from './pipes/enum-as-string.pipe';
+import { ComboProfesionalComponent } from './components/profesionales/combo-profesional/combo-profesional.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { EnumAsStringPipe } from './pipes/enum-as-string.pipe';
     AltaTurnoComponent,
     SacarTurnoComponent,
     EnumToArrayPipe,
-    EnumAsStringPipe
+    EnumAsStringPipe,
+    ComboProfesionalComponent
   ],
   imports: [
     BrowserModule,

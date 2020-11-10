@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Especialidades } from 'src/app/utils/especialidades.enum';
 
 @Component({
@@ -8,10 +8,15 @@ import { Especialidades } from 'src/app/utils/especialidades.enum';
 })
 export class AltaTurnoComponent implements OnInit {
 
-  constructor() { }
-  especialidades:Especialidades
+  @Output() seleccionaEspecialidad:EventEmitter<Especialidades> = new EventEmitter<Especialidades>();
+  especialidades=Especialidades
+  constructor() {
+   }
 
   ngOnInit(): void {
   }
 
+  onOptionsSelected(especialidad){
+    this.seleccionaEspecialidad.emit(especialidad);
+  }
 }
