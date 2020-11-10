@@ -10,9 +10,9 @@ export class SpinnerModalComponent implements OnInit {
 cargando:boolean;
   constructor(private router:Router) { 
     this.cargando=true;
-    setTimeout(() => {
-      this.cargando=false;
-    }, 7000);
+    // setTimeout(() => {
+    //   this.cargando=false;
+    // }, 7000);
   }
 
   ngOnInit(): void {

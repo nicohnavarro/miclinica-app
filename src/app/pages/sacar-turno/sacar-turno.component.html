@@ -1,1 +1,6 @@
-<app-alta-turno></app-alta-turno>
+<div class="especialidad">
+    <app-combo-especialidad (seleccionaEspecialidad)="mandamosEspecialidad($event)"></app-combo-especialidad>
+</div>
+<div class="medico">
+    <app-combo-profesional [especialidad]=turno_especialidad [medicos]=lista_medicos ></app-combo-profesional>
+</div>

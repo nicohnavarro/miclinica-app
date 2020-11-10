@@ -23,36 +23,34 @@ export class RegisterComponent implements OnInit {
 
   async ObtenerUsuario(user: User) {
     this.openDialog();
-    
-    await this.fileSvc.UploadFile(this.file_uno, user.mail)
-    setTimeout(() => {
-      user.first_image = this.fileSvc.fb;
-      this.fileSvc.UploadFile(this.file_dos, user.mail)
-      setTimeout(async() => {
-        user.second_image = this.fileSvc.fb;
-        switch (user.type) {
-          case 'Paciente':
-            this.userSvc.agregarPaciente(user);
-            this.Registrar(user);
-            //this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-            break;
-          case 'Medico':
-            this.userSvc.agregarMedico(user);
-            this.Registrar(user);
-            break;
+    let cred = await this.Registrar(user);
+    let task_1 = await this.fileSvc.UploadFile(this.file_uno, user.mail);
+    let task_2 = await this.fileSvc.UploadFile(this.file_dos, user.mail);
+    user.first_image = await task_1.ref.getDownloadURL();
+    user.second_image = await task_2.ref.getDownloadURL();
+    switch (user.type) {
+      case 'Paciente':
+        this.userSvc.agregarPaciente(user);
+        this.dialog.closeAll();
+        this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+        break;
+        case 'Medico':
+          this.userSvc.agregarMedico(user);
+          this.dialog.closeAll();
+          this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+          break;
           case 'Admin':
             this.userSvc.agregarAdmin(user);
-            this.Registrar(user);
-            break;
-          default:
-            break;
-        }
-      }, 2000);
-    }, 4000);
+            this.dialog.closeAll();
+            this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+        break;
+      default:
+        break;
+    }
   }
 
-  async Registrar(user:User){
-    await this.authSvc.register(user.mail, user.password).catch(err => {this.openSnackBar(err,'Uops!');});
+  async Registrar(user: User) {
+    return await this.authSvc.register(user.mail, user.password).catch(err => { this.openSnackBar(err, 'Uops!'); });
   }
 
   GetImgDos(img: File) {
@@ -73,7 +71,7 @@ export class RegisterComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     let snackBarRef = this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 3000,
     });
     snackBarRef.afterDismissed().subscribe(() => {
       //console.log('The snack-bar was dismissed');

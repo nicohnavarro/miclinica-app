@@ -2,11 +2,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Especialidades } from 'src/app/utils/especialidades.enum';
 
 @Component({
-  selector: 'app-alta-turno',
-  templateUrl: './alta-turno.component.html',
-  styleUrls: ['./alta-turno.component.scss']
+  selector: 'app-combo-especialidad',
+  templateUrl: './combo-especialidad.component.html',
+  styleUrls: ['./combo-especialidad.component.scss']
 })
-export class AltaTurnoComponent implements OnInit {
+export class ComboEspecialidadComponent implements OnInit {
 
   @Output() seleccionaEspecialidad:EventEmitter<Especialidades> = new EventEmitter<Especialidades>();
   especialidades=Especialidades
@@ -16,7 +16,7 @@ export class AltaTurnoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onOptionsSelected(especialidad){
+  onOptionsSelected(especialidad:Especialidades){
     this.seleccionaEspecialidad.emit(especialidad);
   }
 }

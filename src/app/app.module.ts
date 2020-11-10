@@ -29,11 +29,12 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { InfoHomeComponent } from './components/shared/info-home/info-home.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { ListadoTurnosComponent } from './components/turnos/listado-turnos/listado-turnos.component';
-import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.component';
 import { SacarTurnoComponent } from './pages/sacar-turno/sacar-turno.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
 import { EnumAsStringPipe } from './pipes/enum-as-string.pipe';
 import { ComboProfesionalComponent } from './components/profesionales/combo-profesional/combo-profesional.component';
+import { ComboEspecialidadComponent } from './components/especialidades/combo-especialidad/combo-especialidad.component';
+import { AltaEspecialidadComponent } from './components/especialidades/alta-especialidad/alta-especialidad.component';
 
 
 @NgModule({
@@ -57,11 +58,12 @@ import { ComboProfesionalComponent } from './components/profesionales/combo-prof
     InfoHomeComponent,
     EncuestaComponent,
     ListadoTurnosComponent,
-    AltaTurnoComponent,
     SacarTurnoComponent,
     EnumToArrayPipe,
     EnumAsStringPipe,
-    ComboProfesionalComponent
+    ComboProfesionalComponent,
+    ComboEspecialidadComponent,
+    AltaEspecialidadComponent
   ],
   imports: [
     BrowserModule,

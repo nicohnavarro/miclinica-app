@@ -20,22 +20,6 @@ export class FileService {
   async UploadFile(file: File, correo: string) {
     this.filePath = `profile_images/${correo}/${Date.now()}`;
     this.fileRef = this.storage.ref(this.filePath);
-    const task = this.storage.upload(this.filePath, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = this.fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              this.fb = url;
-            }
-          });
-        })
-      )
-      .subscribe(url => {
-        if (url) {
-        }
-      });
+    return await this.storage.upload(this.filePath, file);
   }
 }
