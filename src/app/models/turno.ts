@@ -1,3 +1,4 @@
+import { Especialidades } from '../utils/especialidades.enum';
 import { IMedico } from './medico';
 import { IPaciente } from './paciente';
 
@@ -7,7 +8,8 @@ export interface ITurno {
     medico:IMedico,
     fecha:Date,
     resena:string,
-    encuesta:string
+    encuesta:string,
+    especialidad:Especialidades
 
     
 }

@@ -15,8 +15,6 @@ import { AngularMaterialModule } from './modules/angular-material.module';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { UploadImageComponent } from './components/shared/upload-image/upload-image.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { MatCarouselModule } from '@ngbmodule/material-carousel';
-import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { StepperFormComponent } from './components/shared/stepper-form/stepper-form.component';
 import { UserDetailComponent } from './components/shared/user-detail/user-detail.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -32,6 +30,9 @@ import { InfoHomeComponent } from './components/shared/info-home/info-home.compo
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { ListadoTurnosComponent } from './components/turnos/listado-turnos/listado-turnos.component';
 import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.component';
+import { SacarTurnoComponent } from './pages/sacar-turno/sacar-turno.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array.pipe';
+import { EnumAsStringPipe } from './pipes/enum-as-string.pipe';
 
 
 @NgModule({
@@ -43,7 +44,6 @@ import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.co
     NavBarComponent,
     UploadImageComponent,
     FooterComponent,
-    CarouselComponent,
     StepperFormComponent,
     UserDetailComponent,
     SpinnerModalComponent,
@@ -56,7 +56,10 @@ import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.co
     InfoHomeComponent,
     EncuestaComponent,
     ListadoTurnosComponent,
-    AltaTurnoComponent
+    AltaTurnoComponent,
+    SacarTurnoComponent,
+    EnumToArrayPipe,
+    EnumAsStringPipe
   ],
   imports: [
     BrowserModule,
@@ -70,8 +73,7 @@ import { AltaTurnoComponent } from './components/turnos/alta-turno/alta-turno.co
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    RecaptchaModule,
-    MatCarouselModule.forRoot()
+    RecaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

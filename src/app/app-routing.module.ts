@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
-import { SacarTurnoComponent } from './components/sacar-turno/sacar-turno.component';
+import { SacarTurnoComponent } from './pages/sacar-turno/sacar-turno.component';
 import { InfoHomeComponent } from './components/shared/info-home/info-home.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadosComponent } from './pages/listados/listados.component';

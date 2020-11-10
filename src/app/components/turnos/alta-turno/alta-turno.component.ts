@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Especialidades } from 'src/app/utils/especialidades.enum';
 
 @Component({
   selector: 'app-alta-turno',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AltaTurnoComponent implements OnInit {
 
   constructor() { }
+  especialidades:Especialidades
 
   ngOnInit(): void {
   }
