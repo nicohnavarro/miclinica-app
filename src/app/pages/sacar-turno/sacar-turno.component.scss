@@ -1,0 +1,24 @@
+.sacar_turnos{
+    display: flex;
+    flex-direction: row;
+    div{
+        width: 25vw;
+        margin: 1rem 1rem;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 700px) {
+    .sacar_turnos{
+        flex-direction: column;
+        div{
+            width: 100%;
+            max-height: 320px;
+            // overflow-y: scroll;
+            margin: 1rem 1rem;
+        }
+    }
+    
+  }

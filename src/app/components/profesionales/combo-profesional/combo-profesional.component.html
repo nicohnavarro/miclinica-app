@@ -1,13 +1,18 @@
-
-<p>combo medicos</p>
-<div class="" *ngIf="especialidad">
+<div class="" *ngIf="eligio_especialidad">
+  <div *ngIf="medicos && medicos.length > 0">
     <h3>
-        Medico seleccionado: {{profesional.selectedOptions.selected[0]?.value}}
-      </h3>
-      
-      <mat-selection-list #profesional [multiple]="false">
-        <mat-list-option *ngFor="let medico of medicos" value="{{medico.name}}">
-          {{medico.name}}
-        </mat-list-option>
-      </mat-selection-list>
+      Medico seleccionado: {{profesional.selectedOptions.selected[0]?.value}}
+    </h3>
+
+
+    <mat-selection-list #profesional [multiple]="false">
+      <mat-list-option  *ngFor="let medico of medicos" value="{{medico.name}}">
+        {{medico.name}}
+      </mat-list-option>
+
+    </mat-selection-list>
+  </div>
+  <div *ngIf="medicos && medicos.length === 0 ">
+    <h3>Lo sentimos todavia no hay medicos para esta Especialidad</h3>
+  </div>
 </div>

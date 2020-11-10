@@ -1,6 +1,8 @@
-<div class="especialidad">
-    <app-combo-especialidad (seleccionaEspecialidad)="mandamosEspecialidad($event)"></app-combo-especialidad>
-</div>
-<div class="medico">
-    <app-combo-profesional [especialidad]=turno_especialidad [medicos]=lista_medicos ></app-combo-profesional>
+<div class="sacar_turnos">
+    <div class="especialidad">
+        <app-combo-especialidad (seleccionaEspecialidad)="mandamosEspecialidad($event)"></app-combo-especialidad>
+    </div>
+    <div class="medico">
+        <app-combo-profesional [eligio_especialidad]=tiene_especialidad [medicos]=lista_filtrada ></app-combo-profesional>
+    </div>
 </div>

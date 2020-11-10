@@ -95,8 +95,8 @@
           <mat-form-field *ngIf="tipoUsuario == 'Medico'"appearance="fill" color="accent">
               <mat-label>Especialidad</mat-label>
               <mat-select class="select_color" [formControl]="especialidadFormCtrl" multiple required>
-                  <mat-option class="select_color" *ngFor="let especialidad of especialidades" [value]="especialidad">
-                      {{especialidad}}
+                  <mat-option class="select_color" *ngFor="let especialidad of especialidades | enumToArray" [value]="especialidad.name">
+                      {{especialidad.name}}
                   </mat-option>
               </mat-select>
           </mat-form-field>

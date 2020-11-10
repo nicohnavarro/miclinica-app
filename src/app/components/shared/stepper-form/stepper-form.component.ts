@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
+import { Especialidades } from 'src/app/utils/especialidades.enum';
 
 @Component({
   selector: 'app-stepper-form',
@@ -44,7 +45,8 @@ export class StepperFormComponent implements OnInit {
 
   tipoUsuario: string;
   tiposUsuarios: string[] = ['Paciente', 'Medico'];
-  especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia', 'Neurologia', 'Urologia', 'Pediatria', 'Odontologia', 'Reumatologia', 'Neonatologia', 'Psiquiatria'];
+  //especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia', 'Neurologia', 'Urologia', 'Pediatria', 'Odontologia', 'Reumatologia', 'Neonatologia', 'Psiquiatria'];
+  especialidades= Especialidades;
   hide = true;
   cargando = false;
   usuario: User;

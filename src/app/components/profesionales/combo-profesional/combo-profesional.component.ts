@@ -10,7 +10,7 @@ import { Especialidades } from 'src/app/utils/especialidades.enum';
 })
 export class ComboProfesionalComponent implements OnInit {
 
-  @Input() especialidad:Especialidades; 
+  @Input() eligio_especialidad:boolean; 
   @Input() medicos:IMedico[];
   constructor() {
   }

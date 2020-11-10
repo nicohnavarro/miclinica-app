@@ -12,10 +12,13 @@ export class SacarTurnoComponent implements OnInit {
 
   turno_especialidad:Especialidades;
   lista_medicos:IMedico[];
+  lista_filtrada:IMedico[];
+  tiene_especialidad:boolean=false;
   constructor(private userSvc:UserService) { 
     this.lista_medicos=[];
+    this.lista_filtrada = [];
     this.userSvc.getMedicos().subscribe(data=>{
-      console.log(data);
+      this.lista_medicos=data;
     })
   }
 
@@ -24,10 +27,17 @@ export class SacarTurnoComponent implements OnInit {
 
   mandamosEspecialidad(especialidad:Especialidades){
     this.turno_especialidad=especialidad;
+    this.filtrarMedicosByEspecialidad(especialidad);
+    this.tiene_especialidad=true;
+
   }
 
   filtrarMedicosByEspecialidad(especialidad:Especialidades){
-    this.lista_medicos
+    let filtrada = this.lista_medicos.filter(medico=>{ 
+      if(medico.especialidades.includes(especialidad.toString())) 
+      return medico;
+    })
+    this.lista_filtrada = filtrada;
   }
 
 }
