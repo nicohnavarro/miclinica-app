@@ -1,5 +1,6 @@
 # **MiclinicaApp** 🏥
 
+
 La clínica OnLine, especialista en salud, cuenta actualmente con consultorios (6 en la actualidad), dos laboratorios (físicos en la clínica), 
 y una sala de espera general. Está abierta al público de lunes a viernes en el horario de 8:00 a 19:00, y los sábados en el horario de 8:00 a 14:00.
 
@@ -12,7 +13,7 @@ pero los profesionales pueden cambiar la duración según su especialidad. un pr
 ```
 Estamos necesitando un sistema para que cada uno de los tipos de usuarios realicen las tareas
 que se detallan a continuación.
-```
+
 
 ### Ingreso 🏥
 

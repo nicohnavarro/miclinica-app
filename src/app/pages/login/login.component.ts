@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       const user = await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value);
       if (user) {
         localStorage.setItem('usuario', JSON.stringify(user.user));
-        this.router.navigate(['/home']);
+        this.router.navigate(['/admin/home']);
       }
       else {
         this.openSnackBar('No ingresaste una cuenta valida.', 'Registrarse');
