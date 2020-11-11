@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IMedico } from '../models/medico';
 import { IPaciente } from '../models/paciente';
 import { IAdmin } from '../models/admin';
+import { Dias } from '../utils/dias.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,8 @@ export class UserService {
       first_image:user.first_image,
       second_image:user.second_image,
       type: 'Medico',
+      validado:false,
+      dias_laborables:[Dias.LUNES+'=9:00,10:00'],
       especialidades:user.especializaciones
     }
     this.db.collection<IMedico>('medicos').add(medico);

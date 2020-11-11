@@ -23,29 +23,36 @@ export class RegisterComponent implements OnInit {
 
   async ObtenerUsuario(user: User) {
     this.openDialog();
-    let cred = await this.Registrar(user);
-    let task_1 = await this.fileSvc.UploadFile(this.file_uno, user.mail);
-    let task_2 = await this.fileSvc.UploadFile(this.file_dos, user.mail);
-    user.first_image = await task_1.ref.getDownloadURL();
-    user.second_image = await task_2.ref.getDownloadURL();
-    switch (user.type) {
-      case 'Paciente':
-        this.userSvc.agregarPaciente(user);
-        this.dialog.closeAll();
-        this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-        break;
-        case 'Medico':
-          this.userSvc.agregarMedico(user);
-          this.dialog.closeAll();
-          this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-          break;
-          case 'Admin':
-            this.userSvc.agregarAdmin(user);
+    try{
+      let cred = await this.Registrar(user).catch(err =>{throw err});
+      if(cred){
+        let task_1 = await this.fileSvc.UploadFile(this.file_uno, user.mail);
+        let task_2 = await this.fileSvc.UploadFile(this.file_dos, user.mail);
+        user.first_image = await task_1.ref.getDownloadURL();
+        user.second_image = await task_2.ref.getDownloadURL();
+        switch (user.type) {
+          case 'Paciente':
+            this.userSvc.agregarPaciente(user);
             this.dialog.closeAll();
             this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-        break;
-      default:
-        break;
+            break;
+            case 'Medico':
+              this.userSvc.agregarMedico(user);
+              this.dialog.closeAll();
+              this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+              break;
+              case 'Admin':
+                this.userSvc.agregarAdmin(user);
+                this.dialog.closeAll();
+                this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+            break;
+          default:
+            break;
+        }
+      }
+    }catch(err){
+      this.dialog.closeAll();
+      this.openSnackBar(err,"Uops!");
     }
   }
 
