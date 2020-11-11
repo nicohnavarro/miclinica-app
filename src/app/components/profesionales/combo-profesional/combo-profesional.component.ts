@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IMedico } from 'src/app/models/medico';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-combo-profesional',
@@ -11,15 +12,19 @@ export class ComboProfesionalComponent implements OnInit {
   @Input() eligio_especialidad:boolean; 
   @Input() medicos:IMedico[];
   @Output() seleccionaMedico:EventEmitter<IMedico> = new EventEmitter<IMedico>();
-  
-  constructor() {
+  @Input() medico_mostrar:IMedico;
+  constructor(private userSvc:UserService) {
   }
 
   ngOnInit(): void {
   }
 
-  onOptionsSelected(medico:IMedico){
-    this.seleccionaMedico.emit(medico);
+  onOptionsSelected(id:string){
+    this.userSvc.getMedicoById(id).subscribe(medico=>{
+      this.seleccionaMedico.emit(medico);
+    })
+
+    
   }
 
 }

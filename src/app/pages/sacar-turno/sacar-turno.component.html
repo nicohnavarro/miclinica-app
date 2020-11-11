@@ -3,9 +3,9 @@
         <app-combo-especialidad (seleccionaEspecialidad)="mandamosEspecialidad($event)"></app-combo-especialidad>
     </div>
     <div class="medico">
-        <app-combo-profesional [eligio_especialidad]=tiene_especialidad [medicos]=lista_filtrada_medicos (seleccionaMedico)="mandamosMedico($event)"></app-combo-profesional>
+        <app-combo-profesional [eligio_especialidad]=tiene_especialidad [medico_mostrar]="turno_medico" [medicos]=lista_filtrada_medicos (seleccionaMedico)="mandamosMedico($event)"></app-combo-profesional>
     </div>
-    <div class="dia_horario">
-        <app-combo-dia-horario [eligio_medico]=tiene_medico [dias]=lista_filtrada_dias ></app-combo-dia-horario>
+    <div class="medico">
+        <app-combo-dia-horario [eligio_medico]=tiene_medico [dias]=lista_filtrada_dias [dia_mostrar]="turno_dia" (seleccionaDia)="mandamosDia($event)"></app-combo-dia-horario>
     </div>
 </div>

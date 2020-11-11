@@ -1,12 +1,12 @@
 <div class="" *ngIf="eligio_especialidad">
   <div *ngIf="medicos && medicos.length > 0">
     <h3>
-      Medico seleccionado: {{profesional.selectedOptions.selected[0]?.value}}
+      Medico seleccionado: <span *ngIf="medico_mostrar">{{medico_mostrar.name}}</span>
     </h3>
 
 
     <mat-selection-list #profesional [multiple]="false" (selectionChange)="onOptionsSelected(profesional.selectedOptions.selected[0]?.value)">
-      <mat-list-option  *ngFor="let medico of medicos" value="{{medico.name}}">
+      <mat-list-option  *ngFor="let medico of medicos" value="{{medico.id}}">
         {{medico.name}}
       </mat-list-option>
 

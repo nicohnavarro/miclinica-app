@@ -6,6 +6,7 @@ import { IMedico } from '../models/medico';
 import { IPaciente } from '../models/paciente';
 import { IAdmin } from '../models/admin';
 import { Dias } from '../utils/dias.enum';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,18 @@ export class UserService {
   }
 
   getMedicos(): Observable<IMedico[]> {
-    return this.db.collection<IMedico>('medicos').valueChanges({idField: 'docId'});
+    return this.db.collection<IMedico>('medicos').valueChanges({idField: 'id'});
+  }
+
+  getMedicoById(id:string):Observable<IMedico>{
+    const medicosDocuments = this.db.doc<IMedico>('medicos/' + id);
+    return medicosDocuments.snapshotChanges()
+      .pipe(
+        map(changes => {
+          const data = changes.payload.data();
+          const id = changes.payload.id;
+          return { id, ...data };
+        }))
   }
 
   agregarMedico(user: User): void {
