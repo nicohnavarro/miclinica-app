@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async Registrar(user: User) {
-    return await this.authSvc.register(user.mail, user.password).catch(err => { this.openSnackBar(err, 'Uops!'); });
+    return await this.authSvc.register(user.mail, user.password).catch(err => { throw err });
   }
 
   GetImgDos(img: File) {
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
     this.file_dos = img
   }
 
-  openDialog() {
+  async openDialog() {
     const dialogRef = this.dialog.open(SpinnerModalComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
