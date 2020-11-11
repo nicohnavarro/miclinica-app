@@ -35,6 +35,7 @@ import { EnumAsStringPipe } from './pipes/enum-as-string.pipe';
 import { ComboProfesionalComponent } from './components/profesionales/combo-profesional/combo-profesional.component';
 import { ComboEspecialidadComponent } from './components/especialidades/combo-especialidad/combo-especialidad.component';
 import { AltaEspecialidadComponent } from './components/especialidades/alta-especialidad/alta-especialidad.component';
+import { ComboDiaHorarioComponent } from './components/turnos/combo-dia-horario/combo-dia-horario.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AltaEspecialidadComponent } from './components/especialidades/alta-espe
     EnumAsStringPipe,
     ComboProfesionalComponent,
     ComboEspecialidadComponent,
-    AltaEspecialidadComponent
+    AltaEspecialidadComponent,
+    ComboDiaHorarioComponent
   ],
   imports: [
     BrowserModule,

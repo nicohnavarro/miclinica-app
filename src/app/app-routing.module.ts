@@ -10,7 +10,7 @@ import { RegisterComponent } from './pages/register/register.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: LoginComponent },
   { path: 'admin', component: HomeComponent, data: {animation: 'home'},children:[
     {path: 'home',component:InfoHomeComponent},
     {path: 'listados', component:ListadosComponent},
