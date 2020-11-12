@@ -10,11 +10,11 @@ export class TurnoService {
 
   constructor(private db:AngularFirestore) { }
 
-  getAdmins(): Observable<ITurno[]> {
-    return this.db.collection<ITurno>('administradores').valueChanges({idField: 'docId'});
+  getTurnos(): Observable<ITurno[]> {
+    return this.db.collection<ITurno>('turnos').valueChanges({idField: 'docId'});
   }
 
-  agregarAdmin(turno: ITurno): void {
+  agregarTurno(turno: ITurno): void {
     this.db.collection<ITurno>('turnos').add(turno);
   }
 }

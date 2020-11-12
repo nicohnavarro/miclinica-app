@@ -32,18 +32,21 @@ export class RegisterComponent implements OnInit {
         user.second_image = await task_2.ref.getDownloadURL();
         switch (user.type) {
           case 'Paciente':
-            this.userSvc.agregarPaciente(user);
+            this.userSvc.agregarPaciente(user,cred.user.uid);
             this.dialog.closeAll();
+            localStorage.setItem("usuario",JSON.stringify(user));
             this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
             break;
             case 'Medico':
               this.userSvc.agregarMedico(user);
               this.dialog.closeAll();
+              localStorage.setItem("usuario",JSON.stringify(user));
               this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
               break;
               case 'Admin':
                 this.userSvc.agregarAdmin(user);
                 this.dialog.closeAll();
+                localStorage.setItem("usuario",JSON.stringify(user));
                 this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
             break;
           default:

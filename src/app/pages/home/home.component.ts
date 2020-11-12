@@ -11,10 +11,12 @@ export class HomeComponent implements OnInit {
   showFiller = false;
   usuario;
   verificado: boolean;
+  lista
   constructor(private authSvc: AuthService) {
     if(this.authSvc.user){
       this.usuario=this.authSvc.user;
       this.verificado = this.authSvc.user.emailVerified;
+
     }
   }
   ngOnInit(): void {

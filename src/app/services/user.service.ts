@@ -38,7 +38,18 @@ export class UserService {
     return this.db.collection<IPaciente>('pacientes').valueChanges({idField: 'docId'});
   }
 
-  agregarPaciente(user: User): void {
+  getPacienteById(id:string):Observable<IPaciente>{
+    const medicosDocuments = this.db.doc<IPaciente>('pacientes/' + id);
+    return medicosDocuments.snapshotChanges()
+      .pipe(
+        map(changes => {
+          const data = changes.payload.data();
+          const id = changes.payload.id;
+          return { id, ...data };
+        }))
+  }
+
+  agregarPaciente(user: User,id:string): void {
     let paciente:IPaciente = {
       name:user.name,
       surname:user.surname,
@@ -50,7 +61,7 @@ export class UserService {
       second_image:user.second_image,
       type: 'Paciente'
     }
-    this.db.collection<IPaciente>('pacientes').add(paciente);
+    this.db.collection<IPaciente>('pacientes').doc(id).set(paciente);
   }
 
   getMedicos(): Observable<IMedico[]> {

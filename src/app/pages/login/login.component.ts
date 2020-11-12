@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
   async logIn() {
   try {
     this.activarSpinner();
-      const user = await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value);
-      if (user) {
-        localStorage.setItem('usuario', JSON.stringify(user.user));
+      const auth = await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value);
+      if (auth) {
+        localStorage.setItem('usuario', JSON.stringify(auth.user));
         this.router.navigate(['/admin/home']);
       }
       else {

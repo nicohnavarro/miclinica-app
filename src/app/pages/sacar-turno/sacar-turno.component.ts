@@ -37,8 +37,10 @@ export class SacarTurnoComponent implements OnInit {
     this.lista_filtrada_horarios = [];
     this.userSvc.getMedicos().subscribe(data => {
       this.lista_medicos = data;
+    });
+    this.userSvc.getPacienteById(this.authSvc.user.uid).subscribe(paciente=>{
+      this.turno_paciente = paciente;
     })
-    console.log(this.authSvc.user);
   }
 
   ngOnInit(): void {
@@ -115,7 +117,8 @@ export class SacarTurnoComponent implements OnInit {
       especialidad : this.turno_especialidad,
       medico : this.turno_medico,
       fecha : this.turno_dia,
-      hora : this.turno_hora
+      hora : this.turno_hora,
+      paciente: this.turno_paciente,
     };
     
 
