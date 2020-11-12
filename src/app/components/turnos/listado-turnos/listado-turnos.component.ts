@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,7 +15,8 @@ import { EstadosTurno } from 'src/app/utils/estados-turno.enum';
 export class ListadoTurnosComponent implements OnInit {
 
   Estados= EstadosTurno;
-  turnos:Array<ITurno>=[];
+  @Input()mostrar_turnos:Array<ITurno>=[];
+  @Output() confirmo_turno:EventEmitter<ITurno> = new EventEmitter<ITurno>();
   cargando:boolean=true;
   displayedColumns: string[] = [
     'especialidad',
@@ -30,27 +31,22 @@ export class ListadoTurnosComponent implements OnInit {
     'resena'
   ];
 
-  dataSource = new MatTableDataSource<ITurno>(this.turnos);
+  dataSource = new MatTableDataSource<ITurno>(this.mostrar_turnos);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
   constructor(private userSvc:UserService,private turnoSvc:TurnoService,public dialog: MatDialog) {
-    this.turnos = new Array<ITurno>();
   }
   
   ngOnInit(): void {
-    this.getTurnos();
-    this.dataSource.paginator = this.paginator;
+    setTimeout(() => {
+      this.cargando=false;
+      this.dataSource.data = this.mostrar_turnos;
+      this.dataSource.paginator = this.paginator;
+    }, 5000);
   }
 
   getTurnos(){
-    this.turnoSvc.getTurnos().subscribe(data => {
-      this.turnos = data;
-      this.dataSource.data = this.turnos;
-      setTimeout(() => {
-        
-        this.cargando=false;
-      }, 2000);
-     })
+    this.dataSource.data = this.mostrar_turnos;
   }
 
   openDialog(component,options?): void {
@@ -64,7 +60,7 @@ export class ListadoTurnosComponent implements OnInit {
   aceptarTurno(turno:ITurno){
     turno.estado = EstadosTurno.ACEPTADO;
     this.turnoSvc.modificarTurno(turno,turno.id).then(()=>{
-      this.getTurnos();
+      this.confirmo_turno.emit(turno);
     });
   
   }

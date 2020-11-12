@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ListadoTurnosComponent } from './components/turnos/listado-turnos/listado-turnos.component';
+import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     {path: 'perfil',component:PerfilComponent},
     {path: 'listados', component:ListadosComponent},
     {path: 'sacar-turno', component:SacarTurnoComponent},
-    {path: 'mis-turnos', component:ListadoTurnosComponent},
+    {path: 'mis-turnos', component:MisTurnosComponent},
     {path: 'encuesta', component:EncuestaComponent},
   ]},
   { path: 'login', component: LoginComponent, data: {animation: 'login'} },

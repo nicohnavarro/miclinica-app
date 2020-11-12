@@ -39,6 +39,7 @@ import { ComboDiaComponent } from './components/turnos/combo-dia/combo-dia.compo
 import { ComboHoraComponent } from './components/turnos/combo-hora/combo-hora.component';
 import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     ComboDiaComponent,
     ComboHoraComponent,
     ConfirmModalComponent,
-    PerfilComponent
+    PerfilComponent,
+    MisTurnosComponent
   ],
   imports: [
     BrowserModule,
