@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ITurno } from 'src/app/models/turno';
+import { TurnoService } from 'src/app/services/turno.service';
+import { UserService } from 'src/app/services/user.service';
+import { EstadosTurno } from 'src/app/utils/estados-turno.enum';
 
 @Component({
   selector: 'app-listado-turnos',
@@ -7,9 +14,71 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoTurnosComponent implements OnInit {
 
-  constructor() { }
+  Estados= EstadosTurno;
+  turnos:Array<ITurno>=[];
+  cargando:boolean=true;
+  displayedColumns: string[] = [
+    'especialidad',
+    'medico',
+    'paciente',   
+    'fecha',
+    'hora',
+    'estado',
+    'atender',
+    'cancelar',
+    'encuesta',
+    'resena'
+  ];
 
+  dataSource = new MatTableDataSource<ITurno>(this.turnos);
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  
+  constructor(private userSvc:UserService,private turnoSvc:TurnoService,public dialog: MatDialog) {
+    this.turnos = new Array<ITurno>();
+  }
+  
   ngOnInit(): void {
+    this.getTurnos();
+    this.dataSource.paginator = this.paginator;
+  }
+
+  getTurnos(){
+    this.turnoSvc.getTurnos().subscribe(data => {
+      this.turnos = data;
+      this.dataSource.data = this.turnos;
+      setTimeout(() => {
+        
+        this.cargando=false;
+      }, 2000);
+     })
+  }
+
+  openDialog(component,options?): void {
+    const dialogRef = this.dialog.open(component, options);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getTurnos();
+    });
+  }
+
+  aceptarTurno(turno:ITurno){
+    turno.estado = EstadosTurno.ACEPTADO;
+    this.turnoSvc.modificarTurno(turno,turno.id).then(()=>{
+      this.getTurnos();
+    });
+  
+  }
+  cancelarTurno(turno:ITurno){
+    turno.estado = EstadosTurno.CANCELADO_MEDICO;
+    this.turnoSvc.modificarTurno(turno,turno.id).then(()=>{
+      this.getTurnos();
+    });
+  }
+  agregarEncuesta(turno:ITurno){
+
+  }
+  agregarResena(turno:ITurno){
+
   }
 
 }

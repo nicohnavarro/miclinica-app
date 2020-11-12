@@ -38,6 +38,7 @@ import { AltaEspecialidadComponent } from './components/especialidades/alta-espe
 import { ComboDiaComponent } from './components/turnos/combo-dia/combo-dia.component';
 import { ComboHoraComponent } from './components/turnos/combo-hora/combo-hora.component';
 import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm
     AltaEspecialidadComponent,
     ComboDiaComponent,
     ComboHoraComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

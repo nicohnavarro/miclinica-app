@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EnumAsStringPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: number, enumType: any): any {
+    // return enumType[value].split(/(?=[A-Z])/).join().replace(",", " ");
+    return enumType[value];
   }
 
 }

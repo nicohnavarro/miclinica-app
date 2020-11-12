@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { Dias } from 'src/app/utils/dias.enum';
 import { Especialidades } from 'src/app/utils/especialidades.enum';
+import { EstadosTurno } from 'src/app/utils/estados-turno.enum';
 import { getHorarios, getQuincena } from 'src/app/utils/helpers';
 
 @Component({
@@ -124,6 +125,7 @@ export class SacarTurnoComponent implements OnInit {
       fecha : this.turno_dia,
       hora : this.turno_hora,
       paciente: this.turno_paciente,
+      estado:0,
     };
     
 

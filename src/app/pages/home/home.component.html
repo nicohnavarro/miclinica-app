@@ -8,7 +8,7 @@
                     <mat-icon mat-list-icon>home</mat-icon>
                     <div mat-line>Home</div>
                 </mat-list-item>
-                <mat-list-item>
+                <mat-list-item [routerLink]="['/admin/perfil']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>build</mat-icon>
                     <div mat-line>Perfil</div>
                 </mat-list-item>
@@ -19,6 +19,10 @@
                 <mat-list-item [routerLink]="['/admin/sacar-turno']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>date_range</mat-icon>
                     <div mat-line>Sacar turno</div>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['/admin/mis-turnos']" routerLinkActive="active" >
+                    <mat-icon mat-list-icon>list_alt</mat-icon>
+                    <div mat-line>MIs turnos</div>
                 </mat-list-item>
                 <mat-list-item [routerLink]="['/admin/encuesta']" routerLinkActive="active" >
                     <mat-icon mat-list-icon>assignment</mat-icon>

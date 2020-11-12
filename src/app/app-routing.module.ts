@@ -7,14 +7,18 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListadosComponent } from './pages/listados/listados.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { ListadoTurnosComponent } from './components/turnos/listado-turnos/listado-turnos.component';
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'admin', component: HomeComponent, data: {animation: 'home'},children:[
     {path: 'home',component:InfoHomeComponent},
+    {path: 'perfil',component:PerfilComponent},
     {path: 'listados', component:ListadosComponent},
     {path: 'sacar-turno', component:SacarTurnoComponent},
+    {path: 'mis-turnos', component:ListadoTurnosComponent},
     {path: 'encuesta', component:EncuestaComponent},
   ]},
   { path: 'login', component: LoginComponent, data: {animation: 'login'} },

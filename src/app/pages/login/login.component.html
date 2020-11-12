@@ -68,7 +68,7 @@
         <mat-spinner *ngIf="(cargando)"></mat-spinner>
         <div class="btn-login" >
             <button class="grande" *ngIf="(!cargando)" mat-raised-button color="primary" (click)="logIn()">Ingresar</button>
-            <button class="grande" *ngIf="(cargando)" mat-raised-button color="primary">Cargando ...</button>
+            <!-- <button class="grande" *ngIf="(cargando)" mat-raised-button color="primary">Cargando ...</button> -->
             <button class="grande" mat-raised-button *ngIf="(!cargando)" color="accent" routerLink="/register">Registrarse</button>
         </div>
     </div>
