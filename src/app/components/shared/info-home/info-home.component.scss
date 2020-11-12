@@ -20,11 +20,13 @@
   display: flex;
   flex-direction: row;
   height: auto;
+  animation: fadeIn ease 5s;
   max-height: 300px;
   .img-container {
     width: 50%;
     height: 100%;
     max-height: 200px;
+    animation: fadeIn ease 8s;
     img {
       width: 80%;
       height: 100%;
