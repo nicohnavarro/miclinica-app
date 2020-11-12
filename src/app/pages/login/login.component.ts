@@ -28,6 +28,27 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onOptionsSelected(value){
+    switch (value) {
+      case 'admin':
+        this.emailFormControl.setValue('admin@admin.com');
+        this.passwordFormControl.setValue('123123');
+        break;
+      case 'paciente':
+        this.emailFormControl.setValue('paciente@paciente.com');
+        this.passwordFormControl.setValue('123123');
+        break;
+      case 'medico':
+        this.emailFormControl.setValue('medico@medico.com');
+        this.passwordFormControl.setValue('123123');
+        break;
+    
+      default:
+        break;
+    }
+    
+  }
+
   async logIn() {
   try {
     this.activarSpinner();

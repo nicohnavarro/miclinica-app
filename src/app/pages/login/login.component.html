@@ -1,6 +1,6 @@
 <div class="row">
     <div class="column-imagen">
-        <img src="../../../assets/svg/6301.jpg" alt="">
+        <img src="../../../assets/img/6301-min.jpg" alt="">
         <span>Ingresa con tu usuario y contraseña</span>
         <span>para acceder a la mejor atencion personalizada</span>
     </div>
@@ -36,8 +36,21 @@
                         La contraseña debe contener al menos <strong>6 caracteres</strong>
                     </mat-error> -->
                 </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Ingresar como: </mat-label>
+                    <mat-select [(value)]="selected" (selectionChange)="onOptionsSelected(selected)">
+                        <mat-option value="admin">
+                            Admin
+                        </mat-option>
+                        <mat-option value="paciente">
+                            Paciente
+                        </mat-option>
+                        <mat-option value="medico">
+                            Medico
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </form>
-
         </div>
         <div class="btn-ingreso">
             <!-- <button class="mediano google" mat-raised-button>

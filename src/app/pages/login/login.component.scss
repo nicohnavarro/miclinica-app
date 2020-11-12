@@ -28,22 +28,25 @@
     animation: fadeIn ease 7s;
 
     .example-form {
-        margin: auto;
-        mat-form-field {
-          border-radius: 20px;
-          background: #fff5fd;
-          box-shadow: 20px 20px 60px #d9d0d7, -20px -20px 60px #ffffff;
-          padding: 0.5rem;
-          width: 80%;
-          margin-top: 2rem;
-          margin-bottom: 2rem;
-          mat-label {
-            color: black;
-          }
+      margin: auto;
+      mat-form-field {
+        border-radius: 20px;
+        background: #fff5fd;
+        box-shadow: 20px 20px 60px #d9d0d7, -20px -20px 60px #ffffff;
+        padding: 0.5rem;
+        width: 80%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        mat-label {
+          color: black;
         }
       }
+    }
   }
 }
+
+::ng-deep .mat-select-value{    
+  color: black!important;  }
 
 @keyframes fadeIn {
   0% {
@@ -55,21 +58,19 @@
 }
 
 @keyframes fadeBottom {
-    0% {
-      margin-top: 100%;
-    }
-    100% {
-      margin-top: 5%;
-    }
+  0% {
+    margin-top: 100%;
   }
+  100% {
+    margin-top: 5%;
+  }
+}
 
 mat-toolbar span {
   flex: 1;
   text-align: center;
   align-items: center;
 }
-
-
 
 .btn-login {
   display: flex;
@@ -89,17 +90,15 @@ mat-spinner {
   margin: auto;
 }
 
-
 @media only screen and (max-width: 700px) {
-  .row{
+  .row {
     .column-imagen {
       height: 0;
       width: 0;
     }
-    .column-login{
+    .column-login {
       height: 100%;
       width: 100%;
     }
   }
-
 }
