@@ -38,7 +38,7 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Ingresar como: </mat-label>
-                    <mat-select [(value)]="selected" (selectionChange)="onOptionsSelected(selected)">
+                    <mat-select [(value)]="selected" [formControl]="tipoUsuarioFormCtrl" (selectionChange)="onOptionsSelected(selected)">
                         <mat-option value="admin">
                             Admin
                         </mat-option>

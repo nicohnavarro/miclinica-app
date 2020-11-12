@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  tipoUsuarioFormCtrl = new FormControl('Elegi tipo de usuario');
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -24,12 +26,12 @@ export class LoginComponent implements OnInit {
   cargando = false;
 
   constructor(private authSvc: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
-
+  selected
   ngOnInit(): void {
   }
 
-  onOptionsSelected(value){
-    switch (value) {
+  onOptionsSelected(value) {
+    switch (this.tipoUsuarioFormCtrl.value) {
       case 'admin':
         this.emailFormControl.setValue('admin@admin.com');
         this.passwordFormControl.setValue('123123');
@@ -42,16 +44,16 @@ export class LoginComponent implements OnInit {
         this.emailFormControl.setValue('medico@medico.com');
         this.passwordFormControl.setValue('123123');
         break;
-    
+
       default:
         break;
     }
-    
+
   }
 
   async logIn() {
-  try {
-    this.activarSpinner();
+    try {
+      this.activarSpinner();
       const auth = await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value);
       if (auth) {
         localStorage.setItem('uid', JSON.stringify(auth.user.uid));
@@ -62,7 +64,7 @@ export class LoginComponent implements OnInit {
       }
     }
     catch (err) {
-      this.openSnackBar(err,'Error');
+      this.openSnackBar(err, 'Error');
     }
 
   }
@@ -74,16 +76,16 @@ export class LoginComponent implements OnInit {
     snackBarRef.afterDismissed().subscribe(() => {
       //console.log('The snack-bar was dismissed');
     });
-  
+
     snackBarRef.onAction().subscribe(() => {
       //console.log('The snack-bar action was triggered!');
       this.router.navigate(['/register']);
     });
   }
 
-  activarSpinner(){
-    this.cargando=true;
-    setTimeout(()=>this.cargando=false,3000);
+  activarSpinner() {
+    this.cargando = true;
+    setTimeout(() => this.cargando = false, 3000);
   }
 
 }
