@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmModalComponent } from 'src/app/components/shared/confirm-modal/confirm-modal.component';
 import { IMedico } from 'src/app/models/medico';
+import { IPaciente } from 'src/app/models/paciente';
+import { ITurno } from 'src/app/models/turno';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { Dias } from 'src/app/utils/dias.enum';
 import { Especialidades } from 'src/app/utils/especialidades.enum';
@@ -14,17 +19,18 @@ export class SacarTurnoComponent implements OnInit {
 
   turno_especialidad: Especialidades;
   turno_medico: IMedico;
-  turno_dia:string;
-  turno_hora:string;
+  turno_dia: string;
+  turno_hora: string;
   lista_medicos: IMedico[];
   lista_filtrada_medicos: IMedico[];
   lista_filtrada_dias: string[];
   lista_filtrada_horarios: string[];
   tiene_especialidad: boolean = false;
   tiene_medico: boolean = false;
-  tiene_dia:boolean = false;
+  tiene_dia: boolean = false;
+  turno_paciente:IPaciente;
 
-  constructor(private userSvc: UserService) {
+  constructor(private userSvc: UserService, public dialog: MatDialog,private authSvc:AuthService) {
     this.lista_medicos = [];
     this.lista_filtrada_medicos = [];
     this.lista_filtrada_dias = [];
@@ -32,6 +38,7 @@ export class SacarTurnoComponent implements OnInit {
     this.userSvc.getMedicos().subscribe(data => {
       this.lista_medicos = data;
     })
+    console.log(this.authSvc.user);
   }
 
   ngOnInit(): void {
@@ -52,14 +59,16 @@ export class SacarTurnoComponent implements OnInit {
     this.tiene_medico = true;
   }
 
-  mandamosDia(dia:string){
+  mandamosDia(dia: string) {
     this.turno_dia = dia;
-    this.tiene_dia= true;
+    this.tiene_dia = true;
     this.filtrarHoraByDia(dia);
+
   }
 
-  mandamosHora(hora:string){
-    this.turno_hora=hora;
+  mandamosHora(hora: string) {
+    this.turno_hora = hora;
+    this.openDialog();
     console.log(hora);
   }
 
@@ -72,7 +81,7 @@ export class SacarTurnoComponent implements OnInit {
   }
 
   filtrarDiasByMedico(medico: IMedico) {
-    let dias = medico.dias_laborables.map(dia =>{
+    let dias = medico.dias_laborables.map(dia => {
       return dia.split('=')[0];
     }).map(dia => {
       return Dias[+dia[0]];
@@ -80,12 +89,12 @@ export class SacarTurnoComponent implements OnInit {
 
     let quincenaFiltrada = getQuincena().filter((dia) => {
       let diaNombre = dia.split("-")[0];
-      if(dias.includes(diaNombre)){return dia};
+      if (dias.includes(diaNombre)) { return dia };
     });
-    this.lista_filtrada_dias= quincenaFiltrada;
+    this.lista_filtrada_dias = quincenaFiltrada;
   }
 
-  filtrarHoraByDia(dia:string){
+  filtrarHoraByDia(dia: string) {
     this.lista_filtrada_horarios = getHorarios();
   }
 
@@ -99,6 +108,30 @@ export class SacarTurnoComponent implements OnInit {
     this.tiene_dia = false;
     this.turno_dia = null;
     this.turno_hora = null;
+  }
+
+  async openDialog() {
+    let turno:ITurno ={
+      especialidad : this.turno_especialidad,
+      medico : this.turno_medico,
+      fecha : this.turno_dia,
+      hora : this.turno_hora
+    };
+    
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+        turno
+    };
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent,dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

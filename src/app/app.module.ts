@@ -37,6 +37,7 @@ import { ComboEspecialidadComponent } from './components/especialidades/combo-es
 import { AltaEspecialidadComponent } from './components/especialidades/alta-especialidad/alta-especialidad.component';
 import { ComboDiaComponent } from './components/turnos/combo-dia/combo-dia.component';
 import { ComboHoraComponent } from './components/turnos/combo-hora/combo-hora.component';
+import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ComboHoraComponent } from './components/turnos/combo-hora/combo-hora.co
     ComboEspecialidadComponent,
     AltaEspecialidadComponent,
     ComboDiaComponent,
-    ComboHoraComponent
+    ComboHoraComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
