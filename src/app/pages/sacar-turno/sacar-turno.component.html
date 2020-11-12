@@ -6,6 +6,19 @@
         <app-combo-profesional [eligio_especialidad]=tiene_especialidad [medico_mostrar]="turno_medico" [medicos]=lista_filtrada_medicos (seleccionaMedico)="mandamosMedico($event)"></app-combo-profesional>
     </div>
     <div class="medico">
-        <app-combo-dia-horario [eligio_medico]=tiene_medico [dias]=lista_filtrada_dias [dia_mostrar]="turno_dia" (seleccionaDia)="mandamosDia($event)"></app-combo-dia-horario>
+        <app-combo-dia 
+         [eligio_medico]=tiene_medico
+         [dias]=lista_filtrada_dias 
+         [dia_mostrar]="turno_dia" 
+         (seleccionaDia)="mandamosDia($event)"
+         ></app-combo-dia>
+    </div>
+    <div class="medico">
+        <app-combo-hora 
+         [eligio_dia]=tiene_dia
+         (seleccionaHora)="mandamosHora($event)"
+         [horarios]=lista_filtrada_horarios
+         [horario_mostrar]="turno_hora" 
+         ></app-combo-hora>
     </div>
 </div>
