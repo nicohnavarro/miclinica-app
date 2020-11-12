@@ -15,8 +15,8 @@ import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'admin', component: HomeComponent, data: {animation: 'home'},children:[
-    {path: 'home',component:InfoHomeComponent},
-    {path: 'perfil',component:PerfilComponent},
+    {path: 'home',component:InfoHomeComponent,data: {animation: 'home'}},
+    {path: 'perfil',component:PerfilComponent,data: {animation: 'home'}},
     {path: 'listados', component:ListadosComponent},
     {path: 'sacar-turno', component:SacarTurnoComponent},
     {path: 'mis-turnos', component:MisTurnosComponent},

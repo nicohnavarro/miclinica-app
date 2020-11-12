@@ -3,4 +3,4 @@
 <h2>Turnos siguientes:</h2>
 <app-listado-turnos [mostrar_turnos]=turnos_proximos (confirmo_turno)="actualizar_turnos($event)"></app-listado-turnos>
 <h2>Turnos pasados:</h2>
-<app-listado-turnos [mostrar_turnos]=turnos_pasados (confirmo_turno)="actualizar_turnos($event)"></app-listado-turnos>
+<app-listado-turnos [mostrar_turnos]=turnos_pasados [turno_pasado]=pasados (confirmo_turno)="actualizar_turnos($event)"></app-listado-turnos>

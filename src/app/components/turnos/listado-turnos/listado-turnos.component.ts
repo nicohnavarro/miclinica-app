@@ -16,6 +16,7 @@ export class ListadoTurnosComponent implements OnInit {
 
   Estados= EstadosTurno;
   @Input()mostrar_turnos:Array<ITurno>=[];
+  @Input()turno_pasado:boolean=false;
   @Output() confirmo_turno:EventEmitter<ITurno> = new EventEmitter<ITurno>();
   cargando:boolean=true;
   displayedColumns: string[] = [

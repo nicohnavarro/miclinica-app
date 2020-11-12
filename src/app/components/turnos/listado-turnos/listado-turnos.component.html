@@ -36,7 +36,7 @@
 
       <ng-container matColumnDef="atender">
         <th mat-header-cell *matHeaderCellDef> Aceptar </th>
-        <td mat-cell *matCellDef="let element"><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="aceptarTurno(element)">done</mat-icon></td>
+        <td mat-cell disabled="true" *matCellDef="let element"><mat-icon aria-hidden="false" aria-label="Example home icon" (click)="aceptarTurno(element)">done</mat-icon></td>
       </ng-container>
 
       <ng-container matColumnDef="cancelar">

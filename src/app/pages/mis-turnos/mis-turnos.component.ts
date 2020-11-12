@@ -12,6 +12,7 @@ export class MisTurnosComponent implements OnInit {
   turnos_hoy:ITurno[];
   turnos_proximos:ITurno[];
   turnos_pasados:ITurno[];
+  pasados:boolean=true;
   constructor(private turnoSvc:TurnoService) {
     this.getTurnosHoy();
     this.getTurnosProximos();

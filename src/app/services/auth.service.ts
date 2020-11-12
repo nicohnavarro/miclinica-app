@@ -33,6 +33,7 @@ public user;
   async logout(){
     try{
       await this.afAuth.signOut();
+      this.user = null;
     }
     catch(err){
       console.log(err);
