@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ConfirmModalComponent } from 'src/app/components/shared/confirm-modal/confirm-modal.component';
 import { IMedico } from 'src/app/models/medico';
 import { IPaciente } from 'src/app/models/paciente';
@@ -29,18 +30,22 @@ export class SacarTurnoComponent implements OnInit {
   tiene_medico: boolean = false;
   tiene_dia: boolean = false;
   turno_paciente:IPaciente;
+  loggeado:boolean = false;
 
-  constructor(private userSvc: UserService, public dialog: MatDialog,private authSvc:AuthService) {
-    this.lista_medicos = [];
-    this.lista_filtrada_medicos = [];
-    this.lista_filtrada_dias = [];
-    this.lista_filtrada_horarios = [];
-    this.userSvc.getMedicos().subscribe(data => {
-      this.lista_medicos = data;
-    });
-    this.userSvc.getPacienteById(this.authSvc.user.uid).subscribe(paciente=>{
-      this.turno_paciente = paciente;
-    })
+  constructor(private userSvc: UserService, public dialog: MatDialog,private authSvc:AuthService,private router:Router) {
+    if(this.authSvc.user){
+      this.loggeado=true;
+      this.lista_medicos = [];
+      this.lista_filtrada_medicos = [];
+      this.lista_filtrada_dias = [];
+      this.lista_filtrada_horarios = [];
+      this.userSvc.getMedicos().subscribe(data => {
+        this.lista_medicos = data;
+      });
+      this.userSvc.getPacienteById(this.authSvc.user.uid).subscribe(paciente=>{
+        this.turno_paciente = paciente;
+      })
+    }
   }
 
   ngOnInit(): void {
@@ -135,6 +140,10 @@ export class SacarTurnoComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  irIngreso(){
+this.router.navigate(['login']);
   }
 
 }

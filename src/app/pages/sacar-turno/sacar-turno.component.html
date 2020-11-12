@@ -1,4 +1,4 @@
-<div class="sacar_turnos">
+<div class="sacar_turnos" *ngIf="loggeado">
     <div class="especialidad">
         <app-combo-especialidad (seleccionaEspecialidad)="mandamosEspecialidad($event)"></app-combo-especialidad>
     </div>
@@ -20,5 +20,14 @@
          [horarios]=lista_filtrada_horarios
          [horario_mostrar]="turno_hora" 
          ></app-combo-hora>
+    </div>
+</div>
+
+<div *ngIf="!loggeado">
+    <div class="aviso">
+        <mat-card>
+            Ingresa para poder pedir un turno!
+            <button mat-raised-button color="primary"  (click)="irIngreso()">Ingresar</button>
+        </mat-card>
     </div>
 </div>
