@@ -8,7 +8,7 @@
         <img  *ngIf="usuario != null" [src]="profileImg" alt="">
     </div> -->
     <!-- {{usuario | async | json}} -->
-    <button *ngIf="usuario" mat-button>{{usuario.email}} </button>
+    <button *ngIf="usuario" mat-button>{{usuario.mail}} </button>
     <button mat-icon-button matTooltip="Cerrar sesion" *ngIf="usuario" (click)="logOut()">
         <mat-icon aria-hidden="false" aria-label="logout">logout</mat-icon>
     </button>

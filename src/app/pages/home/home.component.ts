@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { IUser } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,6 +9,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  esAdmin:boolean=false;
+  esMedico:boolean=false;
+  esPaciente:boolean=false;
   showFiller = false;
   usuario;
   verificado: boolean;
@@ -16,8 +19,8 @@ export class HomeComponent implements OnInit {
   constructor(private authSvc: AuthService,private UserSvc:UserService) {
     if(this.authSvc.user){
       this.usuario=this.authSvc.user;
+      console.log(this.usuario)
       this.verificado = this.authSvc.user.emailVerified;
-
     }
   }
   ngOnInit(): void {

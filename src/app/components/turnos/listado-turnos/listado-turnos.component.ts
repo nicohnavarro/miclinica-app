@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITurno } from 'src/app/models/turno';
 import { TurnoService } from 'src/app/services/turno.service';
 import { UserService } from 'src/app/services/user.service';
 import { EstadosTurno } from 'src/app/utils/estados-turno.enum';
+import { ReseniaModalComponent } from '../../shared/resenia-modal/resenia-modal.component';
 
 @Component({
   selector: 'app-listado-turnos',
@@ -75,7 +76,11 @@ export class ListadoTurnosComponent implements OnInit {
 
   }
   agregarResena(turno:ITurno){
-
+    console.log(turno);
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(ReseniaModalComponent,dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
-
 }

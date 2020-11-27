@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { SpinnerModalComponent } from 'src/app/components/shared/spinner-modal/spinner-modal.component';
-import { User } from 'src/app/models/user';
+import { IUser } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { FileService } from 'src/app/services/file.service';
 import { UserService } from 'src/app/services/user.service';
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() { }
 
-  async ObtenerUsuario(user: User) {
+  async ObtenerUsuario(user: IUser) {
     this.openDialog();
     try{
       let cred = await this.Registrar(user).catch(err =>{throw err});
@@ -30,28 +30,31 @@ export class RegisterComponent implements OnInit {
         let task_2 = await this.fileSvc.UploadFile(this.file_dos, user.mail);
         user.first_image = await task_1.ref.getDownloadURL();
         user.second_image = await task_2.ref.getDownloadURL();
-        switch (user.type) {
-          case 'Paciente':
-            this.userSvc.agregarPaciente(user,cred.user.uid);
-            this.dialog.closeAll();
-            localStorage.setItem("usuario",JSON.stringify(user));
-            this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-            break;
-            case 'Medico':
-              this.userSvc.agregarMedico(user);
-              this.dialog.closeAll();
-              localStorage.setItem("usuario",JSON.stringify(user));
-              this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-              break;
-              case 'Admin':
-                this.userSvc.agregarAdmin(user);
-                this.dialog.closeAll();
-                localStorage.setItem("usuario",JSON.stringify(user));
-                this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
-            break;
-          default:
-            break;
-        }
+        this.userSvc.agregarUser(user,cred.user.uid).then((algo)=>{
+          console.log(algo);
+        }).catch(err => {console.log(err)});
+        // switch (user.type) {
+        //   case 'Paciente':
+        //     this.userSvc.agregarPaciente(user,cred.user.uid);
+        //     this.dialog.closeAll();
+        //     localStorage.setItem("usuario",JSON.stringify(user));
+        //     this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+        //     break;
+        //     case 'Medico':
+        //       this.userSvc.agregarMedico(user);
+        //       this.dialog.closeAll();
+        //       localStorage.setItem("usuario",JSON.stringify(user));
+        //       this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+        //       break;
+        //       case 'Admin':
+        //         this.userSvc.agregarAdmin(user);
+        //         this.dialog.closeAll();
+        //         localStorage.setItem("usuario",JSON.stringify(user));
+        //         this.openSnackBar('Usuario registrado con exito!', 'Ir a la home!')
+        //     break;
+        //   default:
+        //     break;
+        // }
       }
     }catch(err){
       this.dialog.closeAll();
@@ -59,7 +62,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  async Registrar(user: User) {
+  async Registrar(user: IUser) {
     return await this.authSvc.register(user.mail, user.password).catch(err => { throw err });
   }
 

@@ -40,6 +40,7 @@ import { ComboHoraComponent } from './components/turnos/combo-hora/combo-hora.co
 import { ConfirmModalComponent } from './components/shared/confirm-modal/confirm-modal.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
+import { ReseniaModalComponent } from './components/shared/resenia-modal/resenia-modal.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
     ComboHoraComponent,
     ConfirmModalComponent,
     PerfilComponent,
-    MisTurnosComponent
+    MisTurnosComponent,
+    ReseniaModalComponent
   ],
   imports: [
     BrowserModule,

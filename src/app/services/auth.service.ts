@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth} from '@angular/fire/auth'
 import { first } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
-import { User } from '../models/user';
+import { IUser } from '../models/user';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,7 @@ public user;
   async login(email:string, password:string){
     try{
       const result = await this.afAuth.signInWithEmailAndPassword(email,password);
-      this.user = result.user;
-      return result;
+      return result.user;
     }
     catch(err){
       throw err;

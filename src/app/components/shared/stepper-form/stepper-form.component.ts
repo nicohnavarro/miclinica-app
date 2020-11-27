@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
+import { IUser } from 'src/app/models/user';
 import { Especialidades } from 'src/app/utils/especialidades.enum';
 
 @Component({
@@ -10,9 +10,9 @@ import { Especialidades } from 'src/app/utils/especialidades.enum';
 })
 export class StepperFormComponent implements OnInit {
 
-  @Output() usuario_registrado:EventEmitter<User> = new EventEmitter<User>();
-  @Output() user_img_1:EventEmitter<File> = new EventEmitter<File>();
-  @Output() user_img_2:EventEmitter<File> = new EventEmitter<File>();
+  @Output() usuario_registrado: EventEmitter<IUser> = new EventEmitter<IUser>();
+  @Output() user_img_1: EventEmitter<File> = new EventEmitter<File>();
+  @Output() user_img_2: EventEmitter<File> = new EventEmitter<File>();
   imagen_uno: string = '../../../assets/img/user.png';
   subirImagen_uno;
 
@@ -45,17 +45,15 @@ export class StepperFormComponent implements OnInit {
 
   tipoUsuario: string;
   tiposUsuarios: string[] = ['Paciente', 'Medico'];
-  //especialidades: string[] = ['Cardiologia', 'Clinica', 'Traumatologia', 'Neurologia', 'Urologia', 'Pediatria', 'Odontologia', 'Reumatologia', 'Neonatologia', 'Psiquiatria'];
-  especialidades= Especialidades;
+  especialidades = Especialidades;
   hide = true;
   cargando = false;
-  usuario: User;
+  usuario: IUser;
 
   datosPersonalesFormGroup: FormGroup;
   datosCuentaFormGroup: FormGroup;
   datosTipoFormGroup: FormGroup;
   constructor() {
-    this.usuario = new User();
     this.datosPersonalesFormGroup = new FormGroup({});
     this.datosTipoFormGroup = new FormGroup({});
     this.datosCuentaFormGroup = new FormGroup({});
@@ -106,15 +104,18 @@ export class StepperFormComponent implements OnInit {
   }
 
   CrearUsuario() {
-    this.usuario.name = this.nombreFormCtrl.value;
-    this.usuario.surname = this.apellidoFormCtrl.value;
-    this.usuario.age = this.edadFormCtrl.value;
-    this.usuario.mail = this.emailFormCtrl.value;
-    this.usuario.password = this.claveFormCtrl.value;
-    this.usuario.address = this.domicilioFormCtrl.value;
-    this.usuario.first_image = this.imagen_uno;
-    this.usuario.second_image = this.imagen_dos;
-    this.usuario.type = this.tipoUsuario;
-    this.usuario.especializaciones = this.especialidadFormCtrl.value;
+    this.usuario = {
+      name: this.nombreFormCtrl.value,
+      surname: this.apellidoFormCtrl.value,
+      age: this.edadFormCtrl.value,
+      mail: this.emailFormCtrl.value,
+      password: this.claveFormCtrl.value,
+      address: this.domicilioFormCtrl.value,
+      type: this.tipoUsuario,
+      first_image: this.imagen_uno,
+      second_image: this.imagen_dos,
+    }
+    if (this.tipoUsuario === 'Medico')
+      this.usuario.especializaciones = this.especialidadFormCtrl.value;
   }
 }

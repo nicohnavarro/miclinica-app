@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser, User } from '../models/user';
+import { IUser } from '../models/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IMedico } from '../models/medico';
@@ -15,11 +15,32 @@ export class UserService {
 
   constructor(private db:AngularFirestore) { }
 
+  getUsers():Observable<any[]> {
+    return this.db.collection<IAdmin>('usuarios').valueChanges({idField: 'docId'});
+  }
+  agregarUser(user:IUser,id:string){
+    return this.db.collection('usuarios').doc(id).set(user);
+  }
+  getUserById(id:string):Observable<IUser>{
+    const usersDocuments = this.db.doc<IUser>('usuarios/' + id);
+    return usersDocuments.snapshotChanges()
+      .pipe(
+        map(changes => {
+          const data = changes.payload.data();
+          const id = changes.payload.id;
+          return { id, ...data };
+        }))
+  }
+
+  setUser(id:string){
+    return this.getUserById(id);
+  }
+
   getAdmins(): Observable<IAdmin[]> {
     return this.db.collection<IAdmin>('administradores').valueChanges({idField: 'docId'});
   }
 
-  agregarAdmin(user: User): void {
+  agregarAdmin(user: IUser): void {
     let admin:IAdmin = {
       name:user.name,
       surname:user.surname,
@@ -49,7 +70,7 @@ export class UserService {
         }))
   }
 
-  agregarPaciente(user: User,id:string): void {
+  agregarPaciente(user: IUser,id:string): void {
     let paciente:IPaciente = {
       name:user.name,
       surname:user.surname,
@@ -79,7 +100,7 @@ export class UserService {
         }))
   }
 
-  agregarMedico(user: User): void {
+  agregarMedico(user: IUser): void {
     let medico:IMedico = {
       name:user.name,
       surname:user.surname,

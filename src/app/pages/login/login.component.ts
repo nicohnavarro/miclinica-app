@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   cargando = false;
 
-  constructor(private authSvc: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authSvc: AuthService,private userSvc:UserService, private router: Router, private _snackBar: MatSnackBar) { }
   selected
   ngOnInit(): void {
   }
@@ -54,14 +55,17 @@ export class LoginComponent implements OnInit {
   async logIn() {
     try {
       this.activarSpinner();
-      const auth = await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value);
-      if (auth) {
-        localStorage.setItem('uid', JSON.stringify(auth.user.uid));
-        this.router.navigate(['/admin/home']);
-      }
-      else {
-        this.openSnackBar('No ingresaste una cuenta valida.', 'Registrarse');
-      }
+      await this.authSvc.login(this.emailFormControl.value, this.passwordFormControl.value).then((auth)=>{
+        if (auth) {
+          this.userSvc.setUser(auth.uid).subscribe((data)=>{
+            this.authSvc.user = data;
+            this.router.navigate(['/admin/home']);
+          });
+        }
+        else {
+          this.openSnackBar('No ingresaste una cuenta valida.', 'Registrarse');
+        }
+      });
     }
     catch (err) {
       this.openSnackBar(err, 'Error');
